@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>qml/pages/Productionpage.qml</file>
+        <file>qml/pages/ProgramConfigPage.qml</file>
+        <file>qml/components/IconButton.qml</file>
+        <file>qml/fontAwesome/FontAwesome.qml</file>
+        <file>qml/fontAwesome/fontawesome-webfont.ttf</file>
+        <file>qml/fontAwesome/Object.qml</file>
+        <file>qml/fontAwesome/qmldir</file>
+        <file>qml/pages/AlarmsPage.qml</file>
+    </qresource>
+</RCC>
