@@ -29,7 +29,7 @@ ApplicationWindow {
         }
     }
 
-    Productionpage {
+    MainPage {
         anchors.fill: parent
     }
 

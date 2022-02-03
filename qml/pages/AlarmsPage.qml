@@ -11,7 +11,7 @@ Page {
         id: alarm
         tagName: "Al_set_Fill_30"
         tagType: Tag.BOOL
-        periodicReads: true
+        //periodicReads: true
         readInterval: 1000
 
         onDataChanged: console.log("Data: " + data)

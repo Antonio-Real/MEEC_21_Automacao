@@ -110,9 +110,11 @@ Page {
 
             model: [{ title: "System", icon: FontAwesome.wrench },
                     { title: "Automatic", icon: FontAwesome.plug },
-                    { title: "Settings", icon: FontAwesome.cogs },
+                    { title: "Manual", icon: FontAwesome.handGrabO },
                     { title: "Alarms", icon: FontAwesome.warning },
-                    { title: "Alarm history", icon: FontAwesome.list }]
+                    { title: "Maintenance", icon: FontAwesome.wrench },
+                    { title: "History", icon: FontAwesome.list },
+                    { title: "Settings", icon: FontAwesome.cogs },]
 
             ScrollIndicator.vertical: ScrollIndicator { }
         }
@@ -122,9 +124,12 @@ Page {
         anchors.fill: parent
         currentIndex: listView.currentIndex
 
-        ProgramConfigPage {}
-        Rectangle {}
-        Rectangle {}
+        SystemPage {}
+        AutomaticPage {}
+        ManualPage {}
         AlarmsPage {}
+        MaintenancePage {}
+        HistoryPage {}
+        SettingsPage {}
     }
 }
