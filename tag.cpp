@@ -2,6 +2,7 @@
 #include <QDebug>
 
 Tag::Tag(QObject *parent) : QObject(parent),
+    m_data(0),
     m_readInterval(1000),
     m_periodicReads(false),
     m_tagParams("protocol=ab_eip&gateway=192.168.250.10&path=1,0&cpu=omron-njnx&name=")

@@ -12,14 +12,15 @@ INCLUDEPATH += EIP
 #-lcli -lws2_32
 LIBS += -L"C:\Users\tonir\Documents\Projetos_IPCA\MEEC_21_Automacao\EIP\bin" -lplctag
 
-
-
 SOURCES += \
         main.cpp \
         plcprogram.cpp \
-        tag.cpp
+        tag.cpp \
+        translationmanager.cpp
 
 RESOURCES += qml.qrc
+
+TRANSLATIONS = languages/translation_en.ts  languages/translation_pt.ts
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -35,4 +36,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     plcprogram.h \
     plctag.h \
-    tag.h
+    tag.h \
+    translationmanager.h

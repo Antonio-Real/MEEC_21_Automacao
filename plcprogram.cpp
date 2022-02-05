@@ -13,6 +13,7 @@ void PlcProgram::readData()
     sProgram prog = m_tag.getData();
 
     name = QString(prog.name);
+    quantity = prog.quantity;
     sfill_exec = prog.sfill_exec;
     sfill_axisPosition = prog.sfill_axisPosition;
     sfill_timer = prog.sfill_timer;
@@ -41,6 +42,7 @@ void PlcProgram::writeData()
     sProgram prog;
 
     qstrncpy(prog.name, name.toStdString().c_str(), 18);
+    prog.quantity = quantity;
     prog.sfill_exec = sfill_exec;
     prog.sfill_axisPosition = sfill_axisPosition;
     prog.sfill_timer = sfill_timer;

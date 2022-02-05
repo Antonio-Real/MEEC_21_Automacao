@@ -67,7 +67,7 @@ private:
     bool m_periodicReads;
 
     QString m_tagParams;
-    uint32_t m_tag;
+    int32_t m_tag;
     QTimer m_timer;
 
     const int timeout = 1000;

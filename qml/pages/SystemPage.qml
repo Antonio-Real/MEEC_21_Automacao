@@ -7,10 +7,40 @@ Page {
     id: root
     title: "Program configuration"
 
+
+
+    Tag {
+        id: shoeSelect
+        tagType: Tag.BOOL
+        tagName: "GL_Prog1_shoes"
+        periodicReads: true
+        readInterval: 200
+        onDataChanged: plcProgramConfig.readData()
+        Component.onCompleted: initializeTag()
+    }
+    Tag {
+        id: bootSelect
+        tagType: Tag.BOOL
+        tagName: "GL_Prog2_boot"
+        periodicReads: true
+        readInterval: 200
+        onDataChanged: plcProgramConfig.readData()
+        Component.onCompleted: initializeTag()
+    }
+    Tag {
+        id: highBootSelect
+        tagType: Tag.BOOL
+        tagName: "GL_Prog3_highboot"
+        periodicReads: true
+        readInterval: 200
+        onDataChanged: plcProgramConfig.readData()
+        Component.onCompleted: initializeTag()
+    }
+
     PlcProgram {
         id: plcProgramConfig
 
-        name: cboxBootType.currentText
+        quantity: parseInt(txtFieldQuantity.text)
         sfill_exec: ckBoxEnableFill.checked ? 1 : 0
         sfill_axisPosition: sliderFillAxisPos.value
         sfill_timer: spinBoxFillTimer.value
@@ -28,10 +58,8 @@ Page {
         sdry_Heat_timer: spinBoxHeatTimer.value
         sdry_Fan_timer: spinBoxFanTimer.value
 
-        Component.onCompleted: readData()
-
         onNewTagData: {
-            cboxBootType.currentIndex = cboxBootType.model.indexOf(name)
+            txtFieldQuantity.text = quantity
             ckBoxEnableFill.checked = sfill_exec === 1
             sliderFillAxisPos.value = sfill_axisPosition
             spinBoxFillTimer.value = sfill_timer
@@ -48,112 +76,218 @@ Page {
             spinBoxUVTimer.value = sdry_UV_timer
             spinBoxHeatTimer.value = sdry_Heat_timer
             spinBoxFanTimer.value = sdry_Fan_timer
-        }        
+        }
     }
 
     GridLayout {
         id: grid
 
-        anchors.fill: parent
-        anchors.margins: 50
-
-        columns: 3
-        rowSpacing: 20
-        columnSpacing: 20
-
-        RowLayout {
-            Layout.columnSpan: 3
-            Layout.alignment: Qt.AlignCenter
-
-            Label {
-                text: "Boot type:"
-                font.pointSize: 20
-            }
-            ComboBox {
-                id: cboxBootType
-                model: ["Shoe", "Boot", "High Boot"]
-            }
+        anchors {
+            fill: parent
+            leftMargin: 50
+            rightMargin: 50
+            topMargin: 20
+            bottomMargin: 20
         }
 
-        GroupBox {
-            title: "Fill"
+        columns: 2
+        rows: 6
+        columnSpacing: 20
+        rowSpacing: 20
+
+        ColumnLayout {
+            Layout.rowSpan: 6
             Layout.fillWidth: true
             Layout.fillHeight: true
-            Layout.maximumHeight: 250
+            Layout.preferredWidth: 20
 
-            label: Label {
-                x: parent.leftPadding
-                width: parent.availableWidth
-                text: parent.title
-                elide: Text.ElideRight
-                font.pointSize: 10
+            Label {
+                text: qsTr("Boot type:")
+                font.pointSize: 25
+                Layout.bottomMargin: 50
             }
 
-            GridLayout {
-                columns: 2
-                rowSpacing: 10
-                columnSpacing: 10
+            Image {
+                horizontalAlignment: Image.AlignLeft | Image.AlignVCenter
+                Layout.fillHeight: true
+                Layout.preferredHeight: 25
+                fillMode: Image.PreserveAspectFit
+                source: "qrc:/qml/assets/shoe.png"
 
+                Rectangle {
+                    anchors {
+                        left: parent.left
+                        top: parent.top
+                        bottom: parent.bottom
+                        margins: -10
+                    }
+                    width: parent.paintedWidth + 20
+                    border.width: 2
+                    radius: 10
+                    border.color: shoeSelect.data === true ? "grey" : "transparent"
+                    color: "transparent"
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            shoeSelect.data = true
+                            shoeSelect.writeTag()
+                        }
+                    }
+                }
+            }
+            Label { text: qsTr("Shoe"); font.pointSize: 20; Layout.bottomMargin: 20; horizontalAlignment: Text.AlignHCenter }
+
+            Image {
+                horizontalAlignment: Image.AlignLeft | Image.AlignVCenter
+                Layout.fillHeight: true
+                Layout.preferredHeight: 25
+                fillMode: Image.PreserveAspectFit
+                source: "qrc:/qml/assets/boot.png"
+
+                Rectangle {
+                    anchors {
+                        left: parent.left
+                        top: parent.top
+                        bottom: parent.bottom
+                        margins: -10
+                    }
+                    width: parent.paintedWidth + 20
+                    border.width: 2
+                    radius: 10
+                    border.color: bootSelect.data === true ? "grey" : "transparent"
+                    color: "transparent"
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            bootSelect.data = true
+                            bootSelect.writeTag()
+                        }
+                    }
+                }
+            }
+            Label { text: qsTr("Boot"); font.pointSize: 20; Layout.bottomMargin: 20; horizontalAlignment: Text.AlignHCenter }
+
+            Image {
+                horizontalAlignment: Image.AlignLeft | Image.AlignVCenter
+                Layout.fillHeight: true
+                Layout.preferredHeight: 25
+                fillMode: Image.PreserveAspectFit
+                source: "qrc:/qml/assets/high_boot.png"
+
+                Rectangle {
+                    anchors {
+                        left: parent.left
+                        top: parent.top
+                        bottom: parent.bottom
+                        margins: -10
+                    }
+                    width: parent.paintedWidth + 20
+                    border.width: 2
+                    radius: 10
+                    border.color: highBootSelect.data === true ? "grey" : "transparent"
+                    color: "transparent"
+                    MouseArea {
+                        anchors.fill: parent
+                        z: 5
+                        onClicked: {
+                            highBootSelect.data = true
+                            highBootSelect.writeTag()
+                        }
+                    }
+                }
+            }
+            Label { text: qsTr("High Boot"); font.pointSize: 20; Layout.bottomMargin: 20; horizontalAlignment: Text.AlignHCenter }
+
+            TextField {
+                id: txtFieldQuantity
+                validator: IntValidator {
+                    bottom: 0
+                    top: 9999
+                }
+            }
+            Label { text: qsTr("Quantity"); font.pointSize: 20}
+        }
+
+        Frame {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            Layout.preferredWidth: 30
+
+
+
+            RowLayout {
+                anchors.fill: parent
+                spacing: 10
+                Label {
+                    text: qsTr("Fill")
+                    font.pointSize: 20
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
+                }
                 CheckBox {
                     id: ckBoxEnableFill
-                    text: "Enable"
-                    Layout.columnSpan: 2
+                    text: qsTr("Enable")
                     Layout.fillWidth: true
+                    Layout.preferredWidth: 20
                 }
 
-                Label { text: "Axis Postion" }
+                Label { text: qsTr("Axis Postion"); Layout.fillWidth: true; Layout.preferredWidth: 20;   }
                 Slider {
                     id: sliderFillAxisPos
                     from: 0; to: 100
                     enabled: ckBoxEnableFill.checked
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
                 }
 
-                Label { text: "Fill timer" }
+                Label { text: qsTr("Fill timer"); Layout.fillWidth: true; Layout.preferredWidth: 20  }
                 SpinBox {
                     id: spinBoxFillTimer
                     enabled: ckBoxEnableFill.checked
                     editable: true
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
                 }
 
             }
         }
 
-        GroupBox {
-            title: "Polishing"
+        Frame {
             Layout.fillWidth: true
             Layout.fillHeight: true
-            Layout.maximumHeight: 250
+            Layout.preferredWidth: 30
 
-            label: Label {
-                x: parent.leftPadding
-                width: parent.availableWidth
-                text: parent.title
-                elide: Text.ElideRight
-                font.pointSize: 10
-            }
-
-            GridLayout {
-                columns: 2
-                rowSpacing: 10
-                columnSpacing: 10
+            RowLayout {
+                anchors.fill: parent
+                spacing: 10
+                Label {
+                    text: qsTr("Polishing")
+                    font.pointSize: 20
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
+                }
 
                 CheckBox {
                     id: ckBoxEnablePolishing
-                    text: "Enable"
-                    Layout.columnSpan: 2
+                    text: qsTr("Enable")
                     Layout.fillWidth: true
+                    Layout.preferredWidth: 20
                 }
 
-                Label { text: "Brush type" }
+                Label { text: qsTr("Brush type"); Layout.fillWidth: true; Layout.preferredWidth: 20 }
                 ComboBox {
                     id: cboxBrushType
-                    model: ["Brush 1", "Brush 2", "Brush 3"]
+                    model: [qsTr("Brush 1"), qsTr("Brush 2"), qsTr("Brush 3")]
                     enabled: ckBoxEnablePolishing.checked
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
                 }
 
-                Label { text: "Polishing timer" }
+                Label { text: qsTr("Polishing timer"); Layout.fillWidth: true; Layout.preferredWidth: 20 }
                 SpinBox {
                     id: spinBoxPolishingTimer
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
                     enabled: ckBoxEnablePolishing.checked
                     editable: true
                 }
@@ -161,154 +295,173 @@ Page {
             }
         }
 
-        GroupBox {
-            title: "Clean"
+        Frame {
             Layout.fillWidth: true
             Layout.fillHeight: true
-            Layout.maximumHeight: 250
+            Layout.preferredWidth: 30
 
-            label: Label {
-                x: parent.leftPadding
-                width: parent.availableWidth
-                text: parent.title
-                elide: Text.ElideRight
-                font.pointSize: 10
-            }
-
-            GridLayout {
-                columns: 2
-                rowSpacing: 10
-                columnSpacing: 10
+            RowLayout {
+                anchors.fill: parent
+                spacing: 10
+                Label {
+                    text: qsTr("Clean")
+                    font.pointSize: 20
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
+                }
 
                 CheckBox {
                     id: ckBoxEnableClean
-                    text: "Enable"
-                    Layout.columnSpan: 2
+                    text: qsTr("Enable")
                     Layout.fillWidth: true
+                    Layout.preferredWidth: 20
                 }
 
-                Label { text: "Air Pressure" }
+                Label { text: qsTr("Air Pressure"); Layout.fillWidth: true; Layout.preferredWidth: 20 }
                 Slider {
                     id: sliderAirPressure
                     from: 0; to: 100
                     enabled: ckBoxEnableClean.checked
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
                 }
 
-                Label { text: "Clean timer" }
+                Label { text: qsTr("Clean timer"); Layout.fillWidth: true; Layout.preferredWidth: 20 }
                 SpinBox {
                     id: spinBoxCleanTimer
                     enabled: ckBoxEnableClean.checked
                     editable: true
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
                 }
 
             }
         }
 
-        GroupBox {
-            title: "Paint"
+        Frame {
             Layout.fillWidth: true
             Layout.fillHeight: true
-            Layout.maximumHeight: 250
+            Layout.preferredWidth: 30
 
-
-            label: Label {
-                x: parent.leftPadding
-                width: parent.availableWidth
-                text: parent.title
-                elide: Text.ElideRight
-                font.pointSize: 10
-            }
-
-            GridLayout {
-                columns: 2
-                rowSpacing: 10
-                columnSpacing: 10
+            RowLayout {
+                anchors.fill: parent
+                spacing: 10
+                Label {
+                    text: qsTr("Paint")
+                    font.pointSize: 20
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
+                }
 
                 CheckBox {
                     id: ckBoxEnablePaint
-                    text: "Enable"
-                    Layout.columnSpan: 2
+                    text: qsTr("Enable")
                     Layout.fillWidth: true
+                    Layout.preferredWidth: 20
                 }
 
-                Label { text: "Axis Postion" }
+                Label { text: qsTr("Axis Postion"); Layout.fillWidth: true; Layout.preferredWidth: 20 }
                 Slider {
                     id: sliderPaintAxisPos
                     from: 0; to: 100
                     enabled: ckBoxEnablePaint.checked
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
                 }
 
-                Label { text: "Paint timer" }
+                Label { text: qsTr("Paint timer"); Layout.fillWidth: true; Layout.preferredWidth: 20 }
                 SpinBox {
                     id: spinBoxPaintTimer
                     enabled: ckBoxEnablePaint.checked
                     editable: true
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
                 }
-
             }
         }
 
-        GroupBox {
-            title: "Drying"
+        Frame {
             Layout.fillWidth: true
             Layout.fillHeight: true
-            Layout.maximumHeight: 250
-
-            label: Label {
-                x: parent.leftPadding
-                width: parent.availableWidth
-                text: parent.title
-                elide: Text.ElideRight
-                font.pointSize: 10
-            }
+            Layout.preferredWidth: 30
 
             GridLayout {
-                columns: 2
+                anchors.fill: parent
+                flow: GridLayout.TopToBottom
+                rows: 3
+                columns: 5
                 rowSpacing: 10
-                columnSpacing: 10
+                columnSpacing: 0
+
+                Label {
+                    text: qsTr("Paint")
+                    font.pointSize: 20
+                    Layout.rowSpan: 3
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
+                }
 
                 CheckBox {
                     id: ckBoxEnableDry
-                    text: "Enable"
-                    Layout.columnSpan: 2
+                    text: qsTr("Enable")
+                    Layout.rowSpan: 3
                     Layout.fillWidth: true
-                    Layout.fillHeight: true
+                    Layout.preferredWidth: 20
                 }
 
-                Label { text: "UV timer" }
+                CheckBox {
+                    id: ckUv
+                    enabled: ckBoxEnableDry.checked
+                    text: "UV"
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
+                }
+                CheckBox {
+                    id: ckHeat
+                    enabled: ckBoxEnableDry.checked
+                    text: "Heat"
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
+                }
+                CheckBox {
+                    id: ckFan
+                    enabled: ckBoxEnableDry.checked
+                    text: "Fan"
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
+                }
+
+                Label { text: qsTr("UV timer"); Layout.fillWidth: true; Layout.preferredWidth: 20 }
+                Label { text: qsTr("Heat timer"); Layout.fillWidth: true; Layout.preferredWidth: 20 }
+                Label { text: qsTr("Fan timer"); Layout.fillWidth: true; Layout.preferredWidth: 20 }
                 SpinBox {
                     id: spinBoxUVTimer
-                    enabled: ckBoxEnableDry.checked
+                    enabled: ckUv.checked && ckBoxEnableDry.checked
                     editable: true
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
                 }
-
-                Label { text: "Heat timer" }
                 SpinBox {
                     id: spinBoxHeatTimer
-                    enabled: ckBoxEnableDry.checked
+                    enabled: ckHeat.checked && ckBoxEnableDry.checked
                     editable: true
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
                 }
-
-                Label { text: "Fan timer" }
                 SpinBox {
                     id: spinBoxFanTimer
-                    enabled: ckBoxEnableDry.checked
+                    enabled: ckFan.checked && ckBoxEnableDry.checked
                     editable: true
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
                 }
-
             }
         }
 
         Button {
             Layout.alignment: Qt.AlignCenter
-            text: "Save config"
+            text: qsTr("Save config")
             onClicked: plcProgramConfig.writeData()
-        }
-
-        Item {
-            Layout.columnSpan: 3
-            Layout.fillHeight: true
-            Layout.fillWidth: true
         }
     }
 }

@@ -8,7 +8,7 @@
 
 struct sProgram {
     char name[20];
-    int16_t quantity; // 192 bytes regardless
+    int16_t quantity;
     int16_t sfill_exec;
     double sfill_axisPosition;
     uint16_t sfill_timer;
@@ -35,7 +35,8 @@ struct sProgram {
 class PlcProgram : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QString name MEMBER name)
+    Q_PROPERTY(QString name MEMBER name NOTIFY newTagData)
+    Q_PROPERTY(int quantity MEMBER quantity NOTIFY newTagData)
     Q_PROPERTY(int sfill_exec MEMBER sfill_exec NOTIFY newTagData)
     Q_PROPERTY(double sfill_axisPosition MEMBER sfill_axisPosition NOTIFY newTagData)
     Q_PROPERTY(int sfill_timer MEMBER sfill_timer NOTIFY newTagData)
@@ -72,6 +73,7 @@ private:
 
     // For exposing to QML
     QString name;
+    int16_t quantity;
     int16_t sfill_exec;
     double sfill_axisPosition;
     uint16_t sfill_timer;

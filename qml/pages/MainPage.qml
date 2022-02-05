@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
+import Translation 1.0
 import "../fontAwesome"
 import "../pages"
 
@@ -44,18 +45,17 @@ Page {
                     transformOrigin: Menu.TopRight
 
                     Action {
-                        property bool isOn: false
-                        text: isOn ? "Turn off fan" : "Turn on fan"
-                        onTriggered: {
-                            if(isOn)
-                                serial.writeToSerial("OFF\n")
-                            else
-                                serial.writeToSerial("ON\n")
-                            isOn = !isOn
-                        }
+                        text: qsTr("Lang: EN")
+                        onTriggered: TranslationManager.language = TranslationManager.EN
                     }
+
                     Action {
-                        text: "Quit app"
+                        text: qsTr("Lang: PT")
+                        onTriggered: TranslationManager.language = TranslationManager.PT
+                    }
+
+                    Action {
+                        text: qsTr("Quit app")
                         onTriggered: Qt.quit()
                     }
                 }
@@ -79,8 +79,9 @@ Page {
                 right: parent.right
                 margins: 10
             }
+            height: 200
             fillMode: Image.PreserveAspectFit
-            //source: "qrc:/assets/icons/est_logo.jpg"
+            source: "qrc:/qml/assets/logo.png"
         }
 
         ListView {
@@ -108,19 +109,20 @@ Page {
                 }
             }
 
-            model: [{ title: "System", icon: FontAwesome.wrench },
-                    { title: "Automatic", icon: FontAwesome.plug },
-                    { title: "Manual", icon: FontAwesome.handGrabO },
-                    { title: "Alarms", icon: FontAwesome.warning },
-                    { title: "Maintenance", icon: FontAwesome.wrench },
-                    { title: "History", icon: FontAwesome.list },
-                    { title: "Settings", icon: FontAwesome.cogs },]
+            model: [{ title: qsTr("System"), icon: FontAwesome.dashboard },
+                    { title: qsTr("Automatic"), icon: FontAwesome.plug },
+                    { title: qsTr("Manual"), icon: FontAwesome.handGrabO },
+                    { title: qsTr("Alarms"), icon: FontAwesome.warning },
+                    { title: qsTr("Maintenance"), icon: FontAwesome.wrench },
+                    { title: qsTr("History"), icon: FontAwesome.list },
+                    { title: qsTr("Settings"), icon: FontAwesome.cogs },]
 
             ScrollIndicator.vertical: ScrollIndicator { }
         }
     }
 
-    StackLayout {
+    SwipeView {
+        interactive: false
         anchors.fill: parent
         currentIndex: listView.currentIndex
 

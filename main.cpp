@@ -1,5 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include "translationmanager.h"
 #include "plcprogram.h"
 #include "tag.h"
 
@@ -10,11 +11,15 @@ int main(int argc, char *argv[])
 #endif
 
     QGuiApplication app(argc, argv);
+    QQmlApplicationEngine engine;
 
+    TranslationManager manager(&engine, &app, &app);
+
+    qmlRegisterSingletonInstance<TranslationManager>("Translation", 1, 0, "TranslationManager", &manager);
     qmlRegisterType<PlcProgram>("PlcTags", 1, 0, "PlcProgram");
     qmlRegisterType<Tag>("PlcTags", 1, 0, "Tag");
 
-    QQmlApplicationEngine engine;
+
     const QUrl url(QStringLiteral("qrc:/qml/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {

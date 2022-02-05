@@ -14,5 +14,11 @@
         <file>qml/pages/HistoryPage.qml</file>
         <file>qml/pages/MaintenancePage.qml</file>
         <file>qml/pages/SettingsPage.qml</file>
+        <file>qml/assets/logo.png</file>
+        <file>languages/translation_en.qm</file>
+        <file>languages/translation_pt.qm</file>
+        <file>qml/assets/boot.png</file>
+        <file>qml/assets/high_boot.png</file>
+        <file>qml/assets/shoe.png</file>
     </qresource>
 </RCC>
