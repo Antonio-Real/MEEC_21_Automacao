@@ -5,7 +5,9 @@ import PlcTags 1.0
 
 Page {
     id: root
-    title: "Maintenance"
+
+    property bool isCurrentPage: SwipeView.isCurrentItem
+
     padding: 50
 
     property var repeaterModel: [
@@ -122,12 +124,16 @@ Page {
                     id: maxValTag
                     tagName: modelData.maxValTag
                     tagType: Tag.INT
+                    periodicReads: isCurrentPage
+                    readInterval: 500
                     Component.onCompleted: initializeTag()
                 }
                 Tag {
                     id: currValTag
                     tagName: modelData.currValTag
                     tagType: Tag.INT
+                    periodicReads: isCurrentPage
+                    readInterval: 500
                     Component.onCompleted: initializeTag()
                 }
             }

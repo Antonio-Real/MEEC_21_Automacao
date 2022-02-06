@@ -1,29 +1,198 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
+import QtMultimedia 5.15
 import PlcTags 1.0
 
 Page {
     id: root
-    title: "Alarms"
 
-    Tag {
-        id: alarm
-        tagName: "Al_set_Fill_30"
-        tagType: Tag.BOOL
-        //periodicReads: true
-        readInterval: 1000
+    signal alarmDetected()
 
-        onDataChanged: console.log("Data: " + data)
-
-        Component.onCompleted: initializeTag()
+    header: TabBar {
+        id: tab
+        width: root.width
+        TabButton {
+            text: "Alarms"
+            font.pointSize: 20
+        }
+        TabButton {
+            text: "Alarm History"
+            font.pointSize: 20
+        }
+    }
+    footer: RowLayout {
+        spacing: 20
+        Button {
+            text: "Clear all alarms"
+            font.pointSize: 20
+            Layout.leftMargin: 20
+            onClicked: {
+                alarmModel.clear()
+                alarmHistoryModel.clear()
+            }
+        }
+        Item { Layout.fillWidth: true }
     }
 
-    Rectangle {
-        anchors.centerIn: parent
-        radius: 100
-        width: 100
-        height: 100
-        color: alarm.data === true ? "lightgreen" : "lightsalmon"
+    property var tagList: [
+        //{ tagName : "Al_Emergency", alarmMessage : "Emergency" },
+        { tagName : "Al_set_Fill_30", alarmMessage : "Amount of filling is less than 30%" },
+        { tagName : "Al_set_Filing5", alarmMessage : "Amount of filling is less than 30%" },
+        { tagName : "Al_set_Paint_Tank1_30", alarmMessage : "Paint level in tank A is lower than 30%" },
+        { tagName : "Al_set_Ink_1", alarmMessage : "Paint level in tank A is lower than 5%" },
+        { tagName : "Al_set_Paint_Tank2_30", alarmMessage : "Paint level in tank B is lower than 30%" },
+        { tagName : "Al_set_Ink_2", alarmMessage : "Paint level in tank B is lower than 5%" },
+        { tagName : "Al_set_Paint_Tank3_30", alarmMessage : "Paint level in tank C is lower than 30%" },
+        { tagName : "Al_set_Ink_3", alarmMessage : "Paint level in tank C is lower than 5%" },
+        { tagName : "Al_conveyor_alarm", alarmMessage : "Conveyor belt fault" },
+        { tagName : "Al_system_pause", alarmMessage : "System is paused" },
+        { tagName : "Al_set_Air_Insufficiet", alarmMessage : "Insufficient air pressure" },
+        { tagName : "Al_set_Brush_1_Use", alarmMessage : "Brush 1 usage limit reached" },
+        { tagName : "Al_set_Brush_2_Use", alarmMessage : "Brush 2 usage limit reached" },
+        { tagName : "Al_set_Brush_3_Use", alarmMessage : "Brush 3 usage limit reached" },
+        { tagName : "Al_end_of_program", alarmMessage : "End of production" },
+    ]
+
+    Repeater {
+        model: tagList
+        delegate: Item {
+            Tag {
+                tagType: Tag.BOOL
+                tagName: modelData.tagName
+                readInterval: 500
+                periodicReads: true
+                onDataChanged: {
+                    if(data === true) {
+                        alarmModel.append({"time" : new Date().toUTCString(), "message" : modelData.alarmMessage})
+                        buzzer.play()
+                        alarmDetected()
+                    }
+                }
+
+                Component.onCompleted: initializeTag()
+            }
+        }
+    }
+
+    Audio {
+        id: buzzer
+        source: "qrc:/qml/assets/buzzer.mp3"
+    }
+
+    StackLayout {
+        anchors.fill: parent
+        anchors.margins: 50
+        currentIndex: tab.currentIndex
+
+        ListView {
+            id: alarmList
+            spacing: 15
+
+            model: ListModel {
+                id: alarmModel
+            }
+
+            headerPositioning: ListView.OverlayHeader
+            header: RowLayout {
+                width: alarmList.width
+                spacing: 10
+
+                Label {
+                    text: "Time of alarm"
+                    font.pointSize: 20
+                    Layout.preferredWidth: 50
+                    Layout.fillWidth: true
+                    Layout.bottomMargin: 50
+                }
+                Label {
+                    text: "Alarm message"
+                    font.pointSize: 20
+                    Layout.preferredWidth: 70
+                    Layout.fillWidth: true
+                    Layout.bottomMargin: 50
+                }
+            }
+
+            delegate: Frame {
+                width: alarmList.width
+                RowLayout {
+                    anchors.fill: parent
+                    spacing: 10
+                    Label {
+                        text: time
+                        font.pointSize: 15
+                        Layout.preferredWidth: 50
+                        Layout.fillWidth: true
+                    }
+                    Label {
+                        text: message
+                        font.pointSize: 15
+                        Layout.preferredWidth: 50
+                        Layout.fillWidth: true
+                    }
+                    Button {
+                        text: "Confirm"
+                        font.pointSize: 16
+                        Layout.fillWidth: true
+                        Layout.preferredWidth: 20
+                        onClicked: {
+                            alarmHistoryModel.append({"time" : time, "message" : message})
+                            alarmModel.remove(index)
+                        }
+                    }
+                }
+            }
+        }
+
+        ListView {
+            id: alarmHistoryList
+            spacing: 15
+
+            model: ListModel {
+                id: alarmHistoryModel
+            }
+
+            headerPositioning: ListView.OverlayHeader
+            header: RowLayout {
+                width: alarmList.width
+
+                spacing: 10
+                Label {
+                    text: "Time of alarm"
+                    font.pointSize: 20
+                    Layout.preferredWidth: 50
+                    Layout.fillWidth: true
+                    Layout.bottomMargin: 50
+                }
+                Label {
+                    text: "Alarm message"
+                    font.pointSize: 20
+                    Layout.preferredWidth: 50
+                    Layout.fillWidth: true
+                    Layout.bottomMargin: 50
+                }
+            }
+
+            delegate: Frame {
+                width: alarmList.width
+                RowLayout {
+                    anchors.fill: parent
+                    spacing: 10
+                    Label {
+                        text: time
+                        font.pointSize: 15
+                        Layout.preferredWidth: 50
+                        Layout.fillWidth: true
+                    }
+                    Label {
+                        text: message
+                        font.pointSize: 15
+                        Layout.preferredWidth: 50
+                        Layout.fillWidth: true
+                    }
+                }
+            }
+        }
     }
 }

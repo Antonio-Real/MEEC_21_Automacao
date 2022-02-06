@@ -129,7 +129,9 @@ Page {
         SystemPage {}
         AutomaticPage {}
         ManualPage {}
-        AlarmsPage {}
+        AlarmsPage {
+            onAlarmDetected: listView.currentIndex = SwipeView.index
+        }
         MaintenancePage {}
         HistoryPage {}
         SettingsPage {}

@@ -20,5 +20,8 @@
         <file>qml/assets/boot.png</file>
         <file>qml/assets/high_boot.png</file>
         <file>qml/assets/shoe.png</file>
+        <file>qml/assets/buzzer.mp3</file>
+        <file>qml/assets/pt_flag.png</file>
+        <file>qml/assets/uk_flag.png</file>
     </qresource>
 </RCC>

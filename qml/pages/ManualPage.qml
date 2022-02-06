@@ -6,6 +6,8 @@ import PlcTags 1.0
 Page {
     id: root
 
+    property bool isCurrentPage: SwipeView.isCurrentItem
+
     //TODO:
     // 1 - Tags should fetch data periodically
     // 2 - Only fetch data if the current page is being shown in the swipeview
@@ -16,6 +18,7 @@ Page {
         tagType: Tag.LREAL
         data: fillDist.value
         onDataChanged: writeTag()
+        periodicReads: isCurrentPage
         Component.onCompleted: {
             initializeTag()
             fillDist.value = data
@@ -26,6 +29,7 @@ Page {
         tagType: Tag.BOOL
         data: switchFillDist.checked
         onDataChanged: writeTag()
+        periodicReads: isCurrentPage
         Component.onCompleted: {
             initializeTag()
             switchFillDist.checked = data
@@ -36,6 +40,7 @@ Page {
         tagType: Tag.BOOL
         data: switchFill.checked
         onDataChanged: writeTag()
+        periodicReads: isCurrentPage
         Component.onCompleted: {
             initializeTag()
             switchFill.checked = data
@@ -48,6 +53,7 @@ Page {
         tagType: Tag.INT
         data: cboxBrushType.currentIndex + 1
         onDataChanged: writeTag()
+        periodicReads: isCurrentPage
         Component.onCompleted: {
             initializeTag()
             cboxBrushType.currentIndex = data - 1
@@ -58,6 +64,7 @@ Page {
         tagType: Tag.BOOL
         data: switchPolish.checked
         onDataChanged: writeTag()
+        periodicReads: isCurrentPage
         Component.onCompleted: {
             initializeTag()
             switchPolish.checked = data
@@ -70,6 +77,7 @@ Page {
         tagType: Tag.REAL
         data: airPressureSlider.value
         onDataChanged: writeTag()
+        periodicReads: isCurrentPage
         Component.onCompleted: {
             initializeTag()
             airPressureSlider.value = data
@@ -80,6 +88,7 @@ Page {
         tagType: Tag.BOOL
         data: switchClean.checked
         onDataChanged: writeTag()
+        periodicReads: isCurrentPage
         Component.onCompleted: {
             initializeTag()
             switchClean.checked = data
@@ -92,6 +101,7 @@ Page {
         tagType: Tag.LREAL
         data: paintDist.value
         onDataChanged: writeTag()
+        periodicReads: isCurrentPage
         Component.onCompleted: {
             initializeTag()
             paintDist.value = data
@@ -102,6 +112,7 @@ Page {
         tagType: Tag.BOOL
         data: switchPaintDist.checked
         onDataChanged: writeTag()
+        periodicReads: isCurrentPage
         Component.onCompleted: {
             initializeTag()
             switchPaintDist.checked = data
@@ -112,6 +123,7 @@ Page {
         tagType: Tag.INT
         data: cboxPaintType.currentIndex + 1
         onDataChanged: writeTag()
+        periodicReads: isCurrentPage
         Component.onCompleted: {
             initializeTag()
             cboxPaintType.currentIndex = data - 1
@@ -122,6 +134,7 @@ Page {
         tagType: Tag.BOOL
         data: switchPaint.checked
         onDataChanged: writeTag()
+        periodicReads: isCurrentPage
         Component.onCompleted: {
             initializeTag()
             switchPaint.checked = data
@@ -134,6 +147,7 @@ Page {
         tagType: Tag.BOOL
         data: switchUV.checked
         onDataChanged: writeTag()
+        periodicReads: isCurrentPage
         Component.onCompleted: {
             initializeTag()
             switchUV.checked = data
@@ -144,6 +158,7 @@ Page {
         tagType: Tag.BOOL
         data: switchHeat.checked
         onDataChanged: writeTag()
+        periodicReads: isCurrentPage
         Component.onCompleted: {
             initializeTag()
             switchHeat.checked = data
@@ -154,6 +169,7 @@ Page {
         tagType: Tag.BOOL
         data: switchFan.checked
         onDataChanged: writeTag()
+        periodicReads: isCurrentPage
         Component.onCompleted: {
             initializeTag()
             switchFan.checked = data
