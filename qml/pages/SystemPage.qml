@@ -40,7 +40,6 @@ Page {
     PlcProgram {
         id: plcProgramConfig
 
-        quantity: parseInt(txtFieldQuantity.text)
         sfill_exec: ckBoxEnableFill.checked ? 1 : 0
         sfill_axisPosition: sliderFillAxisPos.value
         sfill_timer: spinBoxFillTimer.value
@@ -204,6 +203,9 @@ Page {
                     bottom: 0
                     top: 9999
                 }
+                onEditingFinished: plcProgramConfig.quantity = parseInt(text)
+                font.pointSize: 15
+                Layout.preferredWidth: 100
             }
             Label { text: qsTr("Quantity"); font.pointSize: 20}
         }
@@ -227,11 +229,16 @@ Page {
                 CheckBox {
                     id: ckBoxEnableFill
                     text: qsTr("Enable")
+                    font.pointSize: 15
                     Layout.fillWidth: true
                     Layout.preferredWidth: 20
                 }
 
-                Label { text: qsTr("Axis Postion"); Layout.fillWidth: true; Layout.preferredWidth: 20;   }
+                Label {
+                    text: qsTr("Distance"); font.pointSize: 15
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
+                }
                 Slider {
                     id: sliderFillAxisPos
                     from: 0; to: 100
@@ -240,7 +247,11 @@ Page {
                     Layout.preferredWidth: 20
                 }
 
-                Label { text: qsTr("Fill timer"); Layout.fillWidth: true; Layout.preferredWidth: 20  }
+                Label {
+                    text: qsTr("Fill timer"); font.pointSize: 15
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
+                }
                 SpinBox {
                     id: spinBoxFillTimer
                     enabled: ckBoxEnableFill.checked
@@ -270,11 +281,16 @@ Page {
                 CheckBox {
                     id: ckBoxEnablePolishing
                     text: qsTr("Enable")
+                    font.pointSize: 15
                     Layout.fillWidth: true
                     Layout.preferredWidth: 20
                 }
 
-                Label { text: qsTr("Brush type"); Layout.fillWidth: true; Layout.preferredWidth: 20 }
+                Label {
+                    text: qsTr("Brush type"); font.pointSize: 15
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
+                }
                 ComboBox {
                     id: cboxBrushType
                     model: [qsTr("Brush 1"), qsTr("Brush 2"), qsTr("Brush 3")]
@@ -283,7 +299,11 @@ Page {
                     Layout.preferredWidth: 20
                 }
 
-                Label { text: qsTr("Polishing timer"); Layout.fillWidth: true; Layout.preferredWidth: 20 }
+                Label {
+                    text: qsTr("Polishing timer"); font.pointSize: 15
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
+                }
                 SpinBox {
                     id: spinBoxPolishingTimer
                     Layout.fillWidth: true
@@ -313,20 +333,29 @@ Page {
                 CheckBox {
                     id: ckBoxEnableClean
                     text: qsTr("Enable")
+                    font.pointSize: 15
                     Layout.fillWidth: true
                     Layout.preferredWidth: 20
                 }
 
-                Label { text: qsTr("Air Pressure"); Layout.fillWidth: true; Layout.preferredWidth: 20 }
+                Label {
+                    text: qsTr("Air pressure"); font.pointSize: 15
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
+                }
                 Slider {
                     id: sliderAirPressure
-                    from: 0; to: 100
+                    from: 0; to: 10
                     enabled: ckBoxEnableClean.checked
                     Layout.fillWidth: true
                     Layout.preferredWidth: 20
                 }
 
-                Label { text: qsTr("Clean timer"); Layout.fillWidth: true; Layout.preferredWidth: 20 }
+                Label {
+                    text: qsTr("Clean timer"); font.pointSize: 15
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
+                }
                 SpinBox {
                     id: spinBoxCleanTimer
                     enabled: ckBoxEnableClean.checked
@@ -356,11 +385,16 @@ Page {
                 CheckBox {
                     id: ckBoxEnablePaint
                     text: qsTr("Enable")
+                    font.pointSize: 15
                     Layout.fillWidth: true
                     Layout.preferredWidth: 20
                 }
 
-                Label { text: qsTr("Axis Postion"); Layout.fillWidth: true; Layout.preferredWidth: 20 }
+                Label {
+                    text: qsTr("Distance"); font.pointSize: 15
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
+                }
                 Slider {
                     id: sliderPaintAxisPos
                     from: 0; to: 100
@@ -369,7 +403,11 @@ Page {
                     Layout.preferredWidth: 20
                 }
 
-                Label { text: qsTr("Paint timer"); Layout.fillWidth: true; Layout.preferredWidth: 20 }
+                Label {
+                    text: qsTr("Paint timer"); font.pointSize: 15
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
+                }
                 SpinBox {
                     id: spinBoxPaintTimer
                     enabled: ckBoxEnablePaint.checked
@@ -404,6 +442,7 @@ Page {
                 CheckBox {
                     id: ckBoxEnableDry
                     text: qsTr("Enable")
+                    font.pointSize: 15
                     Layout.rowSpan: 3
                     Layout.fillWidth: true
                     Layout.preferredWidth: 20
@@ -413,6 +452,7 @@ Page {
                     id: ckUv
                     enabled: ckBoxEnableDry.checked
                     text: "UV"
+                    font.pointSize: 15
                     Layout.fillWidth: true
                     Layout.preferredWidth: 20
                 }
@@ -420,6 +460,7 @@ Page {
                     id: ckHeat
                     enabled: ckBoxEnableDry.checked
                     text: "Heat"
+                    font.pointSize: 15
                     Layout.fillWidth: true
                     Layout.preferredWidth: 20
                 }
@@ -427,13 +468,14 @@ Page {
                     id: ckFan
                     enabled: ckBoxEnableDry.checked
                     text: "Fan"
+                    font.pointSize: 15
                     Layout.fillWidth: true
                     Layout.preferredWidth: 20
                 }
 
-                Label { text: qsTr("UV timer"); Layout.fillWidth: true; Layout.preferredWidth: 20 }
-                Label { text: qsTr("Heat timer"); Layout.fillWidth: true; Layout.preferredWidth: 20 }
-                Label { text: qsTr("Fan timer"); Layout.fillWidth: true; Layout.preferredWidth: 20 }
+                Label { text: qsTr("UV timer"); font.pointSize: 15; Layout.fillWidth: true; Layout.preferredWidth: 20 }
+                Label { text: qsTr("Heat timer"); font.pointSize: 15; Layout.fillWidth: true; Layout.preferredWidth: 20 }
+                Label { text: qsTr("Fan timer"); font.pointSize: 15; Layout.fillWidth: true; Layout.preferredWidth: 20 }
                 SpinBox {
                     id: spinBoxUVTimer
                     enabled: ckUv.checked && ckBoxEnableDry.checked
