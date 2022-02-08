@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
+import QtQuick.Controls.Material 2.15
 import QtMultimedia 5.15
 import PlcTags 1.0
 
@@ -36,7 +37,7 @@ Page {
     }
 
     property var tagList: [
-        //{ tagName : "Al_Emergency", alarmMessage : "Emergency" },
+        { tagName : "Al_Emergency", alarmMessage : "Emergency" },
         { tagName : "Al_set_Fill_30", alarmMessage : "Amount of filling is less than 30%" },
         { tagName : "Al_set_Filing5", alarmMessage : "Amount of filling is less than 30%" },
         { tagName : "Al_set_Paint_Tank1_30", alarmMessage : "Paint level in tank A is lower than 30%" },
@@ -50,8 +51,7 @@ Page {
         { tagName : "Al_set_Air_Insufficiet", alarmMessage : "Insufficient air pressure" },
         { tagName : "Al_set_Brush_1_Use", alarmMessage : "Brush 1 usage limit reached" },
         { tagName : "Al_set_Brush_2_Use", alarmMessage : "Brush 2 usage limit reached" },
-        { tagName : "Al_set_Brush_3_Use", alarmMessage : "Brush 3 usage limit reached" },
-        { tagName : "Al_end_of_program", alarmMessage : "End of production" },
+        { tagName : "Al_set_Brush_3_Use", alarmMessage : "Brush 3 usage limit reached" }
     ]
 
     Repeater {
@@ -80,22 +80,19 @@ Page {
         source: "qrc:/qml/assets/buzzer.mp3"
     }
 
-    StackLayout {
-        anchors.fill: parent
-        anchors.margins: 50
-        currentIndex: tab.currentIndex
+    Component {
+        id: listHeader
+        Rectangle {
+            width: alarmList.width
+            implicitWidth: headerRow.implicitWidth
+            implicitHeight: headerRow.implicitHeight
+            color: Material.backgroundColor
+            clip: true
+            z: 2
 
-        ListView {
-            id: alarmList
-            spacing: 15
-
-            model: ListModel {
-                id: alarmModel
-            }
-
-            headerPositioning: ListView.OverlayHeader
-            header: RowLayout {
-                width: alarmList.width
+            RowLayout {
+                id: headerRow
+                anchors.fill: parent
                 spacing: 10
 
                 Label {
@@ -113,6 +110,25 @@ Page {
                     Layout.bottomMargin: 50
                 }
             }
+        }
+    }
+
+    StackLayout {
+        anchors.fill: parent
+        anchors.margins: 50
+        currentIndex: tab.currentIndex
+
+        ListView {
+            id: alarmList
+            spacing: 15
+            clip: true
+
+            model: ListModel {
+                id: alarmModel
+            }
+
+            headerPositioning: ListView.OverlayHeader
+            header: listHeader
 
             delegate: Frame {
                 width: alarmList.width
@@ -148,31 +164,14 @@ Page {
         ListView {
             id: alarmHistoryList
             spacing: 15
+            clip: true
 
             model: ListModel {
                 id: alarmHistoryModel
             }
 
             headerPositioning: ListView.OverlayHeader
-            header: RowLayout {
-                width: alarmList.width
-
-                spacing: 10
-                Label {
-                    text: "Time of alarm"
-                    font.pointSize: 20
-                    Layout.preferredWidth: 50
-                    Layout.fillWidth: true
-                    Layout.bottomMargin: 50
-                }
-                Label {
-                    text: "Alarm message"
-                    font.pointSize: 20
-                    Layout.preferredWidth: 50
-                    Layout.fillWidth: true
-                    Layout.bottomMargin: 50
-                }
-            }
+            header: listHeader
 
             delegate: Frame {
                 width: alarmList.width

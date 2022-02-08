@@ -1,5 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQuickStyle>
 #include "translationmanager.h"
 #include "plcprogram.h"
 #include "tag.h"
@@ -12,6 +13,8 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
+
+    QQuickStyle::setStyle("Material");
 
     TranslationManager manager(&engine, &app, &app);
 

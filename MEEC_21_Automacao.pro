@@ -1,4 +1,4 @@
-QT += quick core
+QT += quick core quickcontrols2 concurrent
 
 CONFIG += c++17
 

@@ -37,6 +37,15 @@ Page {
         Component.onCompleted: initializeTag()
     }
 
+    Tag {
+        id: tagStartButton
+        tagType: Tag.INT
+        tagName: "GL_START_AUTO"
+        data: startButton.pressed
+        onDataChanged: plcProgramConfig.writeData()
+        Component.onCompleted: initializeTag()
+    }
+
     PlcProgram {
         id: plcProgramConfig
 
@@ -100,7 +109,7 @@ Page {
         columns: 2
         rows: 6
         columnSpacing: 20
-        rowSpacing: 20
+        rowSpacing: 15
 
         ColumnLayout {
             Layout.rowSpan: 6
@@ -437,7 +446,7 @@ Page {
                 flow: GridLayout.TopToBottom
                 rows: 3
                 columns: 5
-                rowSpacing: 10
+                rowSpacing: 0
                 columnSpacing: 0
 
                 Label {
@@ -511,9 +520,12 @@ Page {
         }
 
         Button {
+            id: startButton
             Layout.alignment: Qt.AlignCenter
-            text: qsTr("Save config")
-            onClicked: plcProgramConfig.writeData()
+            text: qsTr("Start program")
+            onPressed: {
+                plcProgramConfig.writeData()
+            }
         }
     }
 }

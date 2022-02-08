@@ -198,7 +198,7 @@ Page {
                 }
 
                 Label {
-                    text: qsTr("Distance")
+                    text: qsTr("Distance: %1").arg(fillDist.value.toFixed(2))
                     font.pointSize: 15
                     Layout.fillWidth: true
                     Layout.preferredWidth: 20
@@ -284,7 +284,7 @@ Page {
                 }
 
                 Label {
-                    text: qsTr("Air pressure")
+                    text: qsTr("Air pressure: %1").arg(airPressureSlider.value.toFixed(2))
                     font.pointSize: 15
                     Layout.fillWidth: true
                     Layout.preferredWidth: 20
@@ -326,7 +326,7 @@ Page {
                 }
 
                 Label {
-                    text: qsTr("Distance")
+                    text: qsTr("Distance: %1").arg(paintDist.value.toFixed(2))
                     font.pointSize: 15
                     Layout.fillWidth: true
                     Layout.preferredWidth: 20

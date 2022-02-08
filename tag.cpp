@@ -1,5 +1,6 @@
 #include "tag.h"
 #include <QDebug>
+#include <QtConcurrent>
 
 Tag::Tag(QObject *parent) : QObject(parent),
     m_data(0),
@@ -33,121 +34,125 @@ void Tag::initializeTag()
 
 void Tag::readTag()
 {
-    int rc = plc_tag_read(m_tag, timeout);
-    if(rc != PLCTAG_STATUS_OK) {
-        qDebug("ERROR: Unable to read the data! Got error code %d: %s\n",rc, plc_tag_decode_error(rc));
-        return;
-    }
+    QtConcurrent::run([this](){
+        int rc = plc_tag_read(m_tag, timeout);
+        if(rc != PLCTAG_STATUS_OK) {
+            qDebug("ERROR: Unable to read the data! Got error code %d: %s\n",rc, plc_tag_decode_error(rc));
+            return;
+        }
 
-    switch(m_tagType) {
-    case BYTE: {
-        auto val = plc_tag_get_uint8(m_tag, 0);
-        setData(QVariant(val));
-        break;
-    }
-    case BOOL: {
-        auto val = plc_tag_get_uint16(m_tag, 0);
-        setData(QVariant(val != 0));
-        break;
-    }
-    case WORD: {
-        auto val = plc_tag_get_uint16(m_tag, 0);
-        setData(QVariant(val));
-        break;
-    }
-    case DWORD: {
-        auto val = plc_tag_get_uint32(m_tag, 0);
-        setData(QVariant(val));
-        break;
-    }
-    case LWORD: {
-        auto val = plc_tag_get_uint64(m_tag, 0);
-        setData(QVariant(val));
-        break;
-    }
-    case INT: {
-        auto val = plc_tag_get_int16(m_tag, 0);
-        setData(QVariant(val));
-        break;
-    }
-    case UINT: {
-        auto val = plc_tag_get_uint32(m_tag, 0);
-        setData(QVariant(val));
-        break;
-    }
-    case REAL: {
-        auto val = plc_tag_get_float32(m_tag, 0);
-        setData(QVariant(val));
-        break;
-    }
-    case LREAL: {
-        auto val = plc_tag_get_float64(m_tag, 0);
-        setData(QVariant(val));
-        break;
-    }
-    }
+        switch(m_tagType) {
+        case BYTE: {
+            auto val = plc_tag_get_uint8(m_tag, 0);
+            setData(QVariant(val));
+            break;
+        }
+        case BOOL: {
+            auto val = plc_tag_get_uint16(m_tag, 0);
+            setData(QVariant(val != 0));
+            break;
+        }
+        case WORD: {
+            auto val = plc_tag_get_uint16(m_tag, 0);
+            setData(QVariant(val));
+            break;
+        }
+        case DWORD: {
+            auto val = plc_tag_get_uint32(m_tag, 0);
+            setData(QVariant(val));
+            break;
+        }
+        case LWORD: {
+            auto val = plc_tag_get_uint64(m_tag, 0);
+            setData(QVariant(val));
+            break;
+        }
+        case INT: {
+            auto val = plc_tag_get_int16(m_tag, 0);
+            setData(QVariant(val));
+            break;
+        }
+        case UINT: {
+            auto val = plc_tag_get_uint32(m_tag, 0);
+            setData(QVariant(val));
+            break;
+        }
+        case REAL: {
+            auto val = plc_tag_get_float32(m_tag, 0);
+            setData(QVariant(val));
+            break;
+        }
+        case LREAL: {
+            auto val = plc_tag_get_float64(m_tag, 0);
+            setData(QVariant(val));
+            break;
+        }
+        }
+    });
 }
 
 void Tag::writeTag()
 {
-    int rc;
-    switch(m_tagType) {
-    case BYTE: {
-        auto val = data().value<uint8_t>();
-        rc = plc_tag_set_uint8(m_tag, 0, val);
-        break;
-    }
-    case BOOL: {
-        auto val = data().value<uint16_t>();
-        rc = plc_tag_set_uint16(m_tag, 0, val);
-        break;
-    }
-    case WORD: {
-        auto val = data().value<uint16_t>();
-        rc = plc_tag_set_uint16(m_tag, 0, val);
-        break;
-    }
-    case DWORD: {
-        auto val = data().value<uint32_t>();
-        rc = plc_tag_set_uint32(m_tag, 0, val);
-        break;
-    }
-    case LWORD: {
-        auto val = data().value<uint64_t>();
-        rc = plc_tag_set_uint64(m_tag, 0, val);
-        break;
-    }
-    case INT: {
-        auto val = data().value<int16_t>();
-        rc = plc_tag_set_int16(m_tag, 0, val);
-        break;
-    }
-    case UINT: {
-        auto val = data().value<uint16_t>();
-        rc = plc_tag_set_uint16(m_tag, 0, val);
-        break;
-    }
-    case REAL: {
-        auto val = data().value<float>();
-        rc = plc_tag_set_float32(m_tag, 0, val);
-        break;
-    }
-    case LREAL: {
-        auto val = data().value<double>();
-        rc = plc_tag_set_float64(m_tag, 0, val);
-        break;
-    }
-    }
+    QtConcurrent::run([this](){
+        int rc;
+        switch(m_tagType) {
+        case BYTE: {
+            auto val = data().value<uint8_t>();
+            rc = plc_tag_set_uint8(m_tag, 0, val);
+            break;
+        }
+        case BOOL: {
+            auto val = data().value<uint16_t>();
+            rc = plc_tag_set_uint16(m_tag, 0, val);
+            break;
+        }
+        case WORD: {
+            auto val = data().value<uint16_t>();
+            rc = plc_tag_set_uint16(m_tag, 0, val);
+            break;
+        }
+        case DWORD: {
+            auto val = data().value<uint32_t>();
+            rc = plc_tag_set_uint32(m_tag, 0, val);
+            break;
+        }
+        case LWORD: {
+            auto val = data().value<uint64_t>();
+            rc = plc_tag_set_uint64(m_tag, 0, val);
+            break;
+        }
+        case INT: {
+            auto val = data().value<int16_t>();
+            rc = plc_tag_set_int16(m_tag, 0, val);
+            break;
+        }
+        case UINT: {
+            auto val = data().value<uint16_t>();
+            rc = plc_tag_set_uint16(m_tag, 0, val);
+            break;
+        }
+        case REAL: {
+            auto val = data().value<float>();
+            rc = plc_tag_set_float32(m_tag, 0, val);
+            break;
+        }
+        case LREAL: {
+            auto val = data().value<double>();
+            rc = plc_tag_set_float64(m_tag, 0, val);
+            break;
+        }
+        }
 
-    if(rc != PLCTAG_STATUS_OK) {
-        qDebug("ERROR: Unable to write the data! Got error code %d: %s\n",rc, plc_tag_decode_error(rc));
-        return;
-    }
+        if(rc != PLCTAG_STATUS_OK) {
+            qDebug("ERROR: Unable to write the data! Got error code %d: %s\n",rc, plc_tag_decode_error(rc));
+            return;
+        }
 
-    rc = plc_tag_write(m_tag, timeout);
-    if(rc != PLCTAG_STATUS_OK) {
-        qDebug("ERROR: Unable to write the data! Got error code %d: %s\n",rc, plc_tag_decode_error(rc));
-    }
+        rc = plc_tag_write(m_tag, timeout);
+        if(rc != PLCTAG_STATUS_OK) {
+            qDebug("ERROR: Unable to write the data! Got error code %d: %s\n",rc, plc_tag_decode_error(rc));
+        }
+    });
 }
 
 const QVariant &Tag::data() const

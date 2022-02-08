@@ -111,7 +111,7 @@ Page {
 
             model: [{ title: qsTr("System"), icon: FontAwesome.dashboard },
                     { title: qsTr("Automatic"), icon: FontAwesome.plug },
-                    { title: qsTr("Manual"), icon: FontAwesome.handGrabO },
+                    { title: qsTr("Manual"), icon: FontAwesome.handOUp },
                     { title: qsTr("Alarms"), icon: FontAwesome.warning },
                     { title: qsTr("Maintenance"), icon: FontAwesome.wrench },
                     { title: qsTr("History"), icon: FontAwesome.list },
