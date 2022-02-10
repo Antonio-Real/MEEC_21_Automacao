@@ -3,8 +3,7 @@
 #include <QQuickStyle>
 #include "translationmanager.h"
 #include "plcprogram.h"
-#include "tag.h"
-
+#include "connectionwatchdog.h"
 int main(int argc, char *argv[])
 {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
@@ -17,7 +16,9 @@ int main(int argc, char *argv[])
     QQuickStyle::setStyle("Material");
 
     TranslationManager manager(&engine, &app, &app);
+    ConnectionWatchdog watchdog;
 
+    qmlRegisterSingletonInstance<ConnectionWatchdog>("PlcTags", 1, 0, "ConnectionWatchdog", &watchdog);
     qmlRegisterSingletonInstance<TranslationManager>("Translation", 1, 0, "TranslationManager", &manager);
     qmlRegisterType<PlcProgram>("PlcTags", 1, 0, "PlcProgram");
     qmlRegisterType<Tag>("PlcTags", 1, 0, "Tag");

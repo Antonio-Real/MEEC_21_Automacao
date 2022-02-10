@@ -124,6 +124,7 @@ Page {
         tagType: Tag.BOOL
         tagName: "GL_Pause_auto"
         data: btnPause.pressed
+        onDataChanged: writeTag()
         periodicReads: isCurrentPage
         Component.onCompleted: initializeTag()
     }
@@ -132,6 +133,7 @@ Page {
         tagType: Tag.BOOL
         tagName: "GL_Resume_auto"
         data: btnResume.pressed
+        onDataChanged: writeTag()
         periodicReads: isCurrentPage
         Component.onCompleted: initializeTag()
     }
@@ -140,6 +142,7 @@ Page {
         tagType: Tag.BOOL
         tagName: "GL_Stop_auto"
         data: btnEmergency.pressed
+        onDataChanged: writeTag()
         periodicReads: isCurrentPage
         Component.onCompleted: initializeTag()
     }

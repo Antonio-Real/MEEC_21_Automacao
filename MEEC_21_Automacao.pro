@@ -13,6 +13,7 @@ INCLUDEPATH += EIP
 LIBS += -L"C:\Users\tonir\Documents\Projetos_IPCA\MEEC_21_Automacao\EIP\bin" -lplctag
 
 SOURCES += \
+        connectionwatchdog.cpp \
         main.cpp \
         plcprogram.cpp \
         tag.cpp \
@@ -34,6 +35,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    connectionwatchdog.h \
     plcprogram.h \
     plctag.h \
     tag.h \
