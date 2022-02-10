@@ -14,18 +14,18 @@ Page {
         id: tab
         width: root.width
         TabButton {
-            text: "Alarms"
+            text: qsTr("Alarms")
             font.pointSize: 20
         }
         TabButton {
-            text: "Alarm History"
+            text: qsTr("Alarm History")
             font.pointSize: 20
         }
     }
     footer: RowLayout {
         spacing: 20
         Button {
-            text: "Clear all alarms"
+            text: qsTr("Clear all alarms")
             font.pointSize: 20
             Layout.leftMargin: 20
             onClicked: {
@@ -37,21 +37,21 @@ Page {
     }
 
     property var tagList: [
-        { tagName : "Al_Emergency", alarmMessage : "Emergency" },
-        { tagName : "Al_set_Fill_30", alarmMessage : "Amount of filling is less than 30%" },
-        { tagName : "Al_set_Filing5", alarmMessage : "Amount of filling is less than 30%" },
-        { tagName : "Al_set_Paint_Tank1_30", alarmMessage : "Paint level in tank A is lower than 30%" },
-        { tagName : "Al_set_Ink_1", alarmMessage : "Paint level in tank A is lower than 5%" },
-        { tagName : "Al_set_Paint_Tank2_30", alarmMessage : "Paint level in tank B is lower than 30%" },
-        { tagName : "Al_set_Ink_2", alarmMessage : "Paint level in tank B is lower than 5%" },
-        { tagName : "Al_set_Paint_Tank3_30", alarmMessage : "Paint level in tank C is lower than 30%" },
-        { tagName : "Al_set_Ink_3", alarmMessage : "Paint level in tank C is lower than 5%" },
-        { tagName : "Al_conveyor_alarm", alarmMessage : "Conveyor belt fault" },
-        { tagName : "Al_system_pause", alarmMessage : "System is paused" },
-        { tagName : "Al_set_Air_Insufficiet", alarmMessage : "Insufficient air pressure" },
-        { tagName : "Al_set_Brush_1_Use", alarmMessage : "Brush 1 usage limit reached" },
-        { tagName : "Al_set_Brush_2_Use", alarmMessage : "Brush 2 usage limit reached" },
-        { tagName : "Al_set_Brush_3_Use", alarmMessage : "Brush 3 usage limit reached" }
+        { tagName : "Al_Emergency", alarmMessage : qsTr("Emergency") },
+        { tagName : "Al_set_Fill_30", alarmMessage : qsTr("Amount of filling is less than 30%") },
+        { tagName : "Al_set_Filing5", alarmMessage : qsTr("Amount of filling is less than 30%") },
+        { tagName : "Al_set_Paint_Tank1_30", alarmMessage : qsTr("Paint level in tank A is lower than 30%") },
+        { tagName : "Al_set_Ink_1", alarmMessage : qsTr("Paint level in tank A is lower than 5%") },
+        { tagName : "Al_set_Paint_Tank2_30", alarmMessage : qsTr("Paint level in tank B is lower than 30%") },
+        { tagName : "Al_set_Ink_2", alarmMessage : qsTr("Paint level in tank B is lower than 5%") },
+        { tagName : "Al_set_Paint_Tank3_30", alarmMessage : qsTr("Paint level in tank C is lower than 30%") },
+        { tagName : "Al_set_Ink_3", alarmMessage : qsTr("Paint level in tank C is lower than 5%") },
+        { tagName : "Al_conveyor_alarm", alarmMessage : qsTr("Conveyor belt fault") },
+        { tagName : "Al_system_pause", alarmMessage : qsTr("System is paused") },
+        { tagName : "Al_set_Air_Insufficiet", alarmMessage : qsTr("Insufficient air pressure") },
+        { tagName : "Al_set_Brush_1_Use", alarmMessage : qsTr("Brush 1 usage limit reached") },
+        { tagName : "Al_set_Brush_2_Use", alarmMessage : qsTr("Brush 2 usage limit reached") },
+        { tagName : "Al_set_Brush_3_Use", alarmMessage : qsTr("Brush 3 usage limit reached") }
     ]
 
     Repeater {
@@ -96,14 +96,14 @@ Page {
                 spacing: 10
 
                 Label {
-                    text: "Time of alarm"
+                    text: qsTr("Time of alarm")
                     font.pointSize: 20
                     Layout.preferredWidth: 50
                     Layout.fillWidth: true
                     Layout.bottomMargin: 50
                 }
                 Label {
-                    text: "Alarm message"
+                    text: qsTr("Alarm message")
                     font.pointSize: 20
                     Layout.preferredWidth: 70
                     Layout.fillWidth: true

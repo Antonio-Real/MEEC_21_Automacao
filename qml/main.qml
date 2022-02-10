@@ -7,13 +7,12 @@ import "./pages"
 import "./fontAwesome"
 
 ApplicationWindow {
+    id: appRoot
+
     width: 1280
     height: 720
     visible: true
     title: "Shoe Factory Manager"
-
-    id: appRoot
-
 
     footer: Label {
         id: labelTime
@@ -36,12 +35,10 @@ ApplicationWindow {
         anchors.fill: parent
     }
 
-
     Connections {
         target: ConnectionWatchdog
 
         function onIsOnlineChanged() {
-            console.log("adsasddas", ConnectionWatchdog.isOnline)
             if(!ConnectionWatchdog.isOnline) {
                 popupConnection.open()
             }
@@ -85,7 +82,7 @@ ApplicationWindow {
 
             Label {
                 font.pointSize: 20
-                text: "Connection to PLC currently offline, please check cabling"
+                text: qsTr("Connection to PLC currently offline, please check cabling")
             }
         }
     }

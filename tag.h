@@ -70,7 +70,7 @@ private:
     int32_t m_tag;
     QTimer m_timer;
 
-    const int timeout = 1000;
+    const int timeout = 10;
 };
 
 #endif // TAG_H

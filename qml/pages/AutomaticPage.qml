@@ -469,7 +469,7 @@ Page {
                 CheckBox {
                     id: ckUv
                     enabled: ckBoxEnableDry.checked
-                    text: "UV"
+                    text: qsTr("UV")
                     font.pointSize: 15
                     Layout.fillWidth: true
                     Layout.preferredWidth: 20
@@ -478,7 +478,7 @@ Page {
                 CheckBox {
                     id: ckHeat
                     enabled: ckBoxEnableDry.checked
-                    text: "Heat"
+                    text: qsTr("Heat")
                     font.pointSize: 15
                     Layout.fillWidth: true
                     Layout.preferredWidth: 20
@@ -486,7 +486,7 @@ Page {
                 CheckBox {
                     id: ckFan
                     enabled: ckBoxEnableDry.checked
-                    text: "Fan"
+                    text: qsTr("Fan")
                     font.pointSize: 15
                     Layout.fillWidth: true
                     Layout.preferredWidth: 20

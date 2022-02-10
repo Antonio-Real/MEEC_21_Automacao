@@ -153,7 +153,7 @@ Page {
         width: 80
 
         Label {
-            text: "Quantity: "
+            text: qsTr("Quantity:")
             font.pointSize: 15
             Layout.leftMargin: 50
         }
@@ -165,17 +165,17 @@ Page {
 
         Button {
             id: btnPause
-            text: "Pause"
+            text: qsTr("Pause")
             font.pointSize: 15
         }
         Button {
             id: btnResume
-            text: "Resume"
+            text: qsTr("Resume")
             font.pointSize: 15
         }
         Button {
             id: btnEmergency
-            text: "Emergency"
+            text: qsTr("Emergency")
             font.pointSize: 15
             highlighted: true
 
@@ -241,35 +241,35 @@ Page {
             Layout.leftMargin: 100
             spacing: 100
             Label {
-                text: "Filling"
+                text: qsTr("Filling")
                 horizontalAlignment: Text.AlignHCenter
                 font.pointSize: 15
                 Layout.fillWidth: true
                 Layout.preferredWidth: 20
             }
             Label {
-                text: "Polishing"
+                text: qsTr("Polishing")
                 horizontalAlignment: Text.AlignHCenter
                 font.pointSize: 15
                 Layout.fillWidth: true
                 Layout.preferredWidth: 20
             }
             Label {
-                text: "Cleaning"
+                text: qsTr("Cleaning")
                 horizontalAlignment: Text.AlignHCenter
                 font.pointSize: 15
                 Layout.fillWidth: true
                 Layout.preferredWidth: 20
             }
             Label {
-                text: "Painting"
+                text: qsTr("Painting")
                 horizontalAlignment: Text.AlignHCenter
                 font.pointSize: 15
                 Layout.fillWidth: true
                 Layout.preferredWidth: 20
             }
             Label {
-                text: "Drying"
+                text: qsTr("Drying")
                 horizontalAlignment: Text.AlignHCenter
                 font.pointSize: 15
                 Layout.fillWidth: true
