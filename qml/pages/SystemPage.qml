@@ -141,7 +141,7 @@ Page {
         id: tagEmergency
         tagType: Tag.BOOL
         tagName: "GL_Stop_auto"
-        data: btnEmergency.pressed
+        data: btnEmergency.checked
         onDataChanged: writeTag()
         periodicReads: isCurrentPage
         Component.onCompleted: initializeTag()
@@ -178,8 +178,11 @@ Page {
             text: qsTr("Emergency")
             font.pointSize: 15
             highlighted: true
+            checkable: true
 
-            Material.accent: Material.Red
+            Material.accent: checked ? Material.Orange : Material.Red
+
+            Material.elevation: checked ? 10 : 1
         }
         Item {Layout.fillWidth: true}
     }

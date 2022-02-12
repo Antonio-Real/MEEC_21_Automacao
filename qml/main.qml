@@ -14,6 +14,8 @@ ApplicationWindow {
     visible: true
     title: "Shoe Factory Manager"
 
+    Material.accent: Material.BlueGrey
+
     footer: Label {
         id: labelTime
 

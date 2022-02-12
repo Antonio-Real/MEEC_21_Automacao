@@ -120,7 +120,7 @@
     <message>
         <location filename="../qml/pages/AutomaticPage.qml" line="215"/>
         <source>High Boot</source>
-        <translation type="unfinished">Cano alto</translation>
+        <translation>Cano alto</translation>
     </message>
     <message>
         <location filename="../qml/pages/AutomaticPage.qml" line="227"/>
@@ -242,6 +242,40 @@
         <location filename="../qml/pages/AutomaticPage.qml" line="525"/>
         <source>Start program</source>
         <translation>Começar programa</translation>
+    </message>
+</context>
+<context>
+    <name>HistoryPage</name>
+    <message>
+        <location filename="../qml/pages/HistoryPage.qml" line="12"/>
+        <location filename="../qml/pages/HistoryPage.qml" line="18"/>
+        <source>Shoe</source>
+        <translation>Sapato</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HistoryPage.qml" line="14"/>
+        <source>Boot</source>
+        <translation>Bota</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HistoryPage.qml" line="16"/>
+        <source>High Boot</source>
+        <translation>Cano alto</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HistoryPage.qml" line="78"/>
+        <source>Time</source>
+        <translation>Hora</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HistoryPage.qml" line="85"/>
+        <source>Shoe type</source>
+        <translation>Calçado</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HistoryPage.qml" line="92"/>
+        <source>Quantity</source>
+        <translation>Quantidade</translation>
     </message>
 </context>
 <context>
@@ -520,22 +554,22 @@
         <translation>Emergência</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SystemPage.qml" line="244"/>
+        <location filename="../qml/pages/SystemPage.qml" line="247"/>
         <source>Filling</source>
         <translation>Enchimento</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SystemPage.qml" line="251"/>
+        <location filename="../qml/pages/SystemPage.qml" line="254"/>
         <source>Polishing</source>
         <translation>Polimento</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SystemPage.qml" line="258"/>
+        <location filename="../qml/pages/SystemPage.qml" line="261"/>
         <source>Cleaning</source>
         <translation>Limpeza</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SystemPage.qml" line="265"/>
+        <location filename="../qml/pages/SystemPage.qml" line="268"/>
         <source>Painting</source>
         <translation>Pintura</translation>
     </message>
@@ -580,7 +614,7 @@
         <translation type="vanished">Tempo de pintura</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SystemPage.qml" line="272"/>
+        <location filename="../qml/pages/SystemPage.qml" line="275"/>
         <source>Drying</source>
         <translation>Secagem</translation>
     </message>
@@ -608,7 +642,7 @@
         <translation type="vanished">Shoe Factory</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="85"/>
+        <location filename="../qml/main.qml" line="87"/>
         <source>Connection to PLC currently offline, please check cabling</source>
         <translation>Conexão entre PLC offline, confirmar ligações</translation>
     </message>

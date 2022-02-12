@@ -245,6 +245,40 @@
     </message>
 </context>
 <context>
+    <name>HistoryPage</name>
+    <message>
+        <location filename="../qml/pages/HistoryPage.qml" line="12"/>
+        <location filename="../qml/pages/HistoryPage.qml" line="18"/>
+        <source>Shoe</source>
+        <translation>Shoe</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HistoryPage.qml" line="14"/>
+        <source>Boot</source>
+        <translation>Boot</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HistoryPage.qml" line="16"/>
+        <source>High Boot</source>
+        <translation>High boot</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HistoryPage.qml" line="78"/>
+        <source>Time</source>
+        <translation>Time</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HistoryPage.qml" line="85"/>
+        <source>Shoe type</source>
+        <translation>Shoe type</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HistoryPage.qml" line="92"/>
+        <source>Quantity</source>
+        <translation>Quantity</translation>
+    </message>
+</context>
+<context>
     <name>MainPage</name>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="48"/>
@@ -520,22 +554,22 @@
         <translation>Emergency</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SystemPage.qml" line="244"/>
+        <location filename="../qml/pages/SystemPage.qml" line="247"/>
         <source>Filling</source>
         <translation>Filling</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SystemPage.qml" line="251"/>
+        <location filename="../qml/pages/SystemPage.qml" line="254"/>
         <source>Polishing</source>
         <translation>Polishing</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SystemPage.qml" line="258"/>
+        <location filename="../qml/pages/SystemPage.qml" line="261"/>
         <source>Cleaning</source>
         <translation>Cleaning</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SystemPage.qml" line="265"/>
+        <location filename="../qml/pages/SystemPage.qml" line="268"/>
         <source>Painting</source>
         <translation>Painting</translation>
     </message>
@@ -580,7 +614,7 @@
         <translation type="vanished">Paint timer</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SystemPage.qml" line="272"/>
+        <location filename="../qml/pages/SystemPage.qml" line="275"/>
         <source>Drying</source>
         <translation>Drying</translation>
     </message>
@@ -608,7 +642,7 @@
         <translation type="vanished">Hello World</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="85"/>
+        <location filename="../qml/main.qml" line="87"/>
         <source>Connection to PLC currently offline, please check cabling</source>
         <translation>Connection to PLC currently offline, please check cabling</translation>
     </message>
