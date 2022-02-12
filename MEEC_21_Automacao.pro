@@ -15,6 +15,7 @@ LIBS += -L"C:\Users\tonir\Documents\Projetos_IPCA\MEEC_21_Automacao\EIP\bin" -lp
 SOURCES += \
         connectionwatchdog.cpp \
         main.cpp \
+        mouseeventlistener.cpp \
         plcprogram.cpp \
         tag.cpp \
         translationmanager.cpp
@@ -36,6 +37,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     connectionwatchdog.h \
+    mouseeventlistener.h \
     plcprogram.h \
     plctag.h \
     tag.h \

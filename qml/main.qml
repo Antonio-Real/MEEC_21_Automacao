@@ -3,8 +3,10 @@ import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
 import QtQuick.Layouts 1.15
 import PlcTags 1.0
+import MouseEventListener 1.0
 import "./pages"
 import "./fontAwesome"
+import "./components"
 
 ApplicationWindow {
     id: appRoot
@@ -89,4 +91,20 @@ ApplicationWindow {
         }
     }
 
+
+    SplashScreenManager {
+        id: screenSaver
+        anchors.fill: parent
+        anchors.top: parent.top
+        visible: false
+        z:5
+
+        Connections {
+            target: MouseEventListener
+
+            function onMouseEventDetected() {
+                screenSaver.resetScreenSaver()
+            }
+        }
+    }
 }
