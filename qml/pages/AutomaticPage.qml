@@ -7,6 +7,8 @@ Page {
     id: root
     title: "Program configuration"
 
+    signal  productionStarted()
+
     property bool isCurrentPage: SwipeView.isCurrentItem
 
     Tag {
@@ -39,10 +41,15 @@ Page {
 
     Tag {
         id: tagStartButton
-        tagType: Tag.INT
+        tagType: Tag.BOOL
         tagName: "GL_START_AUTO"
-        data: startButton.pressed
-        onDataChanged: plcProgramConfig.writeData()
+        onDataChanged: {
+            tagStartButton.writeTag()
+
+            if(isCurrentPage)
+                productionStarted()
+        }
+
         Component.onCompleted: initializeTag()
     }
 
@@ -525,6 +532,14 @@ Page {
             text: qsTr("Start program")
             onPressed: {
                 plcProgramConfig.writeData()
+                tagStartButton.data = true
+                timer.start()
+            }
+
+            Timer {
+                id: timer
+                interval: 500
+                onTriggered: tagStartButton.data = false
             }
         }
     }

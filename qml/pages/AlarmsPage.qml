@@ -8,6 +8,30 @@ import PlcTags 1.0
 Page {
     id: root
 
+
+    Component.onCompleted: {
+        if(alarmModelData) {
+            var datamodel1 = JSON.parse(alarmModelData)
+            for (var i = 0; i < datamodel1.length; ++i) alarmModel.append(datamodel1[i])
+        }
+
+        if(alarmHistoryModelData) {
+            var datamodel2 = JSON.parse(alarmHistoryModelData)
+            for (var j = 0; j < datamodel2.length; ++j) alarmHistoryModel.append(datamodel2[j])
+        }
+    }
+
+    Component.onDestruction: {
+        var datamodel1 = []
+        for (var i = 0; i < alarmModel.count; ++i) datamodel1.push(alarmModel.get(i))
+        alarmModelData = JSON.stringify(datamodel1)
+
+        var datamodel2 = []
+        for (var j = 0; j < alarmHistoryModel.count; ++j) datamodel2.push(alarmHistoryModel.get(j))
+        alarmHistoryModelData = JSON.stringify(datamodel2)
+    }
+
+
     signal alarmDetected()
 
     header: TabBar {

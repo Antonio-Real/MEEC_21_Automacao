@@ -1,12 +1,30 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
+import Qt.labs.settings 1.0
 import Translation 1.0
 import "../fontAwesome"
 import "../pages"
 
 Page {
     id: root
+
+    // For saving the data in the ListModels
+    property string alarmHistoryModelData: ""
+    property string alarmModelData: ""
+    property string productionHistoryModelData: ""
+
+    Settings {
+        property alias alarmHistoryModel: root.alarmHistoryModelData
+        property alias alarmModel: root.alarmModelData
+        property alias productionHistoryModel: root.productionHistoryModelData
+
+        Component.onDestruction: {
+            console.log(alarmHistoryModel)
+            console.log(alarmModel)
+            console.log(productionHistoryModel)
+        }
+    }
 
     header: ToolBar {
 
@@ -110,12 +128,12 @@ Page {
             }
 
             model: [{ title: qsTr("System"), icon: FontAwesome.dashboard },
-                    { title: qsTr("Automatic"), icon: FontAwesome.plug },
-                    { title: qsTr("Manual"), icon: FontAwesome.handOUp },
-                    { title: qsTr("Alarms"), icon: FontAwesome.warning },
-                    { title: qsTr("Maintenance"), icon: FontAwesome.wrench },
-                    { title: qsTr("History"), icon: FontAwesome.list },
-                    { title: qsTr("Settings"), icon: FontAwesome.cogs },]
+                { title: qsTr("Automatic"), icon: FontAwesome.plug },
+                { title: qsTr("Manual"), icon: FontAwesome.handOUp },
+                { title: qsTr("Alarms"), icon: FontAwesome.warning },
+                { title: qsTr("Maintenance"), icon: FontAwesome.wrench },
+                { title: qsTr("History"), icon: FontAwesome.list },
+                { title: qsTr("Settings"), icon: FontAwesome.cogs },]
 
             ScrollIndicator.vertical: ScrollIndicator { }
         }
@@ -127,7 +145,9 @@ Page {
         currentIndex: listView.currentIndex
 
         SystemPage {}
-        AutomaticPage {}
+        AutomaticPage {
+            onProductionStarted: listView.currentIndex = 0 // Change to system page
+        }
         ManualPage {}
         AlarmsPage {
             onAlarmDetected: listView.currentIndex = SwipeView.index

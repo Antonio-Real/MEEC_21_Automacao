@@ -8,10 +8,6 @@ Page {
 
     property bool isCurrentPage: SwipeView.isCurrentItem
 
-    //TODO:
-    // 1 - Tags should fetch data periodically
-    // 2 - Only fetch data if the current page is being shown in the swipeview
-
     // FILLING TAGS
     Tag {
         tagName: "man_set_fill_axis_value"

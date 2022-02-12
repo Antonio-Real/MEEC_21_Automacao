@@ -7,12 +7,26 @@ import PlcTags 1.0
 Page {
     id: root
 
+    Component.onCompleted: {
+        if(productionHistoryModelData) {
+            listModel.clear()
+
+            var datamodel = JSON.parse(productionHistoryModelData)
+            for (var i = 0; i < datamodel.length; ++i) listModel.append(datamodel[i])
+        }
+    }
+    Component.onDestruction: {
+        var datamodel = []
+        for (var i = 0; i < listModel.count; ++i) datamodel.push(listModel.get(i))
+            productionHistoryModelData = JSON.stringify(datamodel)
+    }
+
     function shoeSelection(type) {
-        if(data === 1)
+        if(type === 1)
             return qsTr("Shoe")
-        else if(data === 2)
+        else if(type === 2)
             return qsTr("Boot")
-        else if(data === 3)
+        else if(type === 3)
             return qsTr("High Boot")
         else
             return qsTr("Shoe")
@@ -22,27 +36,32 @@ Page {
     Tag {
         id: tagShoeType
         tagName: "GL_historic_shoestype"
-        tagType: Tag.BOOL
+        tagType: Tag.INT
         Component.onCompleted: initializeTag()
     }
 
     Tag {
         id: tagShoeQuantity
         tagName: "GL_historic_shoesquantity"
-        tagType: Tag.BOOL
+        tagType: Tag.INT
         Component.onCompleted: initializeTag()
     }
 
 
     Tag {
+        property bool firstTime: true
+
         tagName: "GL_set_historic"
         tagType: Tag.BOOL
         periodicReads: true
         onDataChanged: {
-            if(data === true) {
+            if((data === true) && (!firstTime)) {
                 tagShoeQuantity.readTag()
                 tagShoeType.readTag()
                 listModel.append({"time" : new Date().toUTCString(), "type" : tagShoeType.data, "quantity" : tagShoeQuantity.data})
+            }
+            else {
+                firstTime = false
             }
         }
         Component.onCompleted: initializeTag()
