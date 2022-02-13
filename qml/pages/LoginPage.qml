@@ -13,8 +13,8 @@ Page {
     Users { id: users }
 
     Timer {
-        id: loginTimer
-        interval: 500
+        id: timer
+        interval: 100
         onTriggered: {
             for(var i=0; i < users.userDatabase.length; i++) {
                 var user = users.userDatabase[i]
@@ -35,7 +35,7 @@ Page {
     function login() {
         txt_error.text = ""
         spinner.running = true
-        loginTimer.start()
+        timer.start()
     }
 
     function errorOcurred(error) {

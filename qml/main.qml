@@ -21,20 +21,35 @@ ApplicationWindow {
 
     Material.accent: Material.BlueGrey
 
-    footer: Label {
-        id: labelTime
+    footer: RowLayout {
 
-        font.pointSize: 10
-        padding: 10
-        horizontalAlignment: Text.AlignRight
-        verticalAlignment: Text.AlignVCenter
+        Label {
+            Layout.leftMargin: 20
+            Layout.rightMargin: 20
+            Layout.bottomMargin: 10
+            font.pointSize: 15
+            visible: currentUser !== undefined
+            text: qsTr("%1 - %2").arg(currentUser.name).arg(currentUser.role)
+        }
 
-        Timer {
-            running: true
-            triggeredOnStart: true
-            interval: 1000
-            repeat: true
-            onTriggered: labelTime.text = new Date().toUTCString()
+        Item { Layout.fillWidth: true }
+
+        Label {
+            id: labelTime
+            Layout.leftMargin: 20
+            Layout.rightMargin: 20
+            Layout.bottomMargin: 10
+            font.pointSize: 15
+            horizontalAlignment: Text.AlignRight
+            verticalAlignment: Text.AlignVCenter
+
+            Timer {
+                running: true
+                triggeredOnStart: true
+                interval: 1000
+                repeat: true
+                onTriggered: labelTime.text = new Date().toUTCString()
+            }
         }
     }
 
@@ -97,19 +112,21 @@ ApplicationWindow {
     }
 
 
-//    SplashScreenManager {
-//        id: screenSaver
-//        anchors.fill: parent
-//        anchors.top: parent.top
-//        visible: false
-//        z:5
+    SplashScreenManager {
+        id: screenSaver
+        anchors.fill: parent
+        anchors.top: parent.top
+        visible: false
+        sv_enabled: currentUser !== undefined
+        sv_pass_code: currentUser.pw
+        z:5
 
-//        Connections {
-//            target: MouseEventListener
+        Connections {
+            target: MouseEventListener
 
-//            function onMouseEventDetected() {
-//                screenSaver.resetScreenSaver()
-//            }
-//        }
-//    }
+            function onMouseEventDetected() {
+                screenSaver.resetScreenSaver()
+            }
+        }
+    }
 }

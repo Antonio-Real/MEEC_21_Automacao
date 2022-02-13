@@ -2,6 +2,7 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
 import Qt.labs.settings 1.0
+import PlcTags 1.0
 import Translation 1.0
 import "../fontAwesome"
 import "../pages"
@@ -34,6 +35,14 @@ Page {
                 return perm.pages.includes(index)
             }
         }
+    }
+
+    Tag {
+        id: tagAutomaticStatus
+        tagType: Tag.BOOL
+        tagName: "GL_Manual_Button"
+        periodicReads: true
+        Component.onCompleted: initializeTag()
     }
 
     header: ToolBar {
@@ -135,6 +144,11 @@ Page {
 
                 onClicked: {
                     if(checkPermissions(currentUser.role, index)) {
+
+                        // Quick hack to prevent entering manual page when automatic mode is running
+                        if(index === 2 && tagAutomaticStatus.data)
+                            return
+
                         listView.currentIndex = index
                         drawer.close()
                     }

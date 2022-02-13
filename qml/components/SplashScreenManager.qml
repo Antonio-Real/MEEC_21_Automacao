@@ -149,7 +149,7 @@ Item {
                 Layout.alignment: Qt.AlignHCenter
 
                 onTextChanged: {
-                    if(text.length === 4)
+                    if(text.length === sv_pass_code.length)
                     {
                         if(text != sv_pass_code)
                         {

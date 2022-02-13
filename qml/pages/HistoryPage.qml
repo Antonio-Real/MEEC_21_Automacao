@@ -67,6 +67,16 @@ Page {
         Component.onCompleted: initializeTag()
     }
 
+    footer: RowLayout {
+        spacing: 20
+        Button {
+            text: qsTr("Clear history")
+            font.pointSize: 15
+            Layout.leftMargin: 20
+            onClicked: listModel.clear()
+        }
+        Item { Layout.fillWidth: true }
+    }
 
     ListView {
         id: alarmList

@@ -50,7 +50,7 @@ Page {
         spacing: 20
         Button {
             text: qsTr("Clear all alarms")
-            font.pointSize: 20
+            font.pointSize: 15
             Layout.leftMargin: 20
             onClicked: {
                 alarmModel.clear()
