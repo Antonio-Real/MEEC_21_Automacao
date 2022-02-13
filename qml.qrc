@@ -24,5 +24,7 @@
         <file>qml/assets/pt_flag.png</file>
         <file>qml/assets/uk_flag.png</file>
         <file>qml/components/SplashScreenManager.qml</file>
+        <file>qml/assets/Users.qml</file>
+        <file>qml/pages/LoginPage.qml</file>
     </qresource>
 </RCC>

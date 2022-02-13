@@ -16,6 +16,9 @@ ApplicationWindow {
     visible: true
     title: "Shoe Factory Manager"
 
+    property var currentUser
+
+
     Material.accent: Material.BlueGrey
 
     footer: Label {
@@ -35,9 +38,11 @@ ApplicationWindow {
         }
     }
 
-    MainPage {
+    StackView {
         anchors.fill: parent
+        initialItem: LoginPage {}
     }
+
 
     Connections {
         target: ConnectionWatchdog
@@ -92,19 +97,19 @@ ApplicationWindow {
     }
 
 
-    SplashScreenManager {
-        id: screenSaver
-        anchors.fill: parent
-        anchors.top: parent.top
-        visible: false
-        z:5
+//    SplashScreenManager {
+//        id: screenSaver
+//        anchors.fill: parent
+//        anchors.top: parent.top
+//        visible: false
+//        z:5
 
-        Connections {
-            target: MouseEventListener
+//        Connections {
+//            target: MouseEventListener
 
-            function onMouseEventDetected() {
-                screenSaver.resetScreenSaver()
-            }
-        }
-    }
+//            function onMouseEventDetected() {
+//                screenSaver.resetScreenSaver()
+//            }
+//        }
+//    }
 }

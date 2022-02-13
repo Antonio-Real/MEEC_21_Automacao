@@ -18,11 +18,21 @@ Page {
         property alias alarmHistoryModel: root.alarmHistoryModelData
         property alias alarmModel: root.alarmModelData
         property alias productionHistoryModel: root.productionHistoryModelData
+    }
 
-        Component.onDestruction: {
-            console.log(alarmHistoryModel)
-            console.log(alarmModel)
-            console.log(productionHistoryModel)
+    // For checking which pages the current user can visit
+    function checkPermissions(role, index) {
+        var permissions = [{"role" : "OPERATOR", "pages" : [0, 5, 6]},
+                           {"role" : "DESIGNER", "pages" : [0, 5, 6]},
+                           {"role" : "SUPERVISOR", "pages" : [0, 2, 3, 4, 5, 6]},
+                           {"role" : "MANAGER", "pages" : [0, 1, 2, 3, 4, 5, 6]}]
+
+        for(var i=0; i < permissions.length; i++) {
+            var perm = permissions[i]
+
+            if(perm.role === role) {
+                return perm.pages.includes(index)
+            }
         }
     }
 
@@ -121,9 +131,13 @@ Page {
                 font.pixelSize: 16
                 text: modelData.icon + "    " + modelData.title
 
+                enabled: checkPermissions(currentUser.role, index)
+
                 onClicked: {
-                    listView.currentIndex = index
-                    drawer.close()
+                    if(checkPermissions(currentUser.role, index)) {
+                        listView.currentIndex = index
+                        drawer.close()
+                    }
                 }
             }
 

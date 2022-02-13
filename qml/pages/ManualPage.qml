@@ -6,6 +6,8 @@ import PlcTags 1.0
 Page {
     id: root
 
+    // TODO: not allowing using this page while automatic mode is running
+
     property bool isCurrentPage: SwipeView.isCurrentItem
 
     // FILLING TAGS
