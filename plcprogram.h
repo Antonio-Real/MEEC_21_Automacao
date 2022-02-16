@@ -19,6 +19,7 @@ struct sProgram {
     float sclean_air_pressure;
     uint16_t sclean_timer;
     int16_t spaint_exec;
+    int16_t spaint_inkType;
     double spaint_axisPosition;
     uint16_t spaint_timer;
     int16_t sdry_exec;
@@ -47,6 +48,7 @@ class PlcProgram : public QObject
     Q_PROPERTY(float sclean_air_pressure MEMBER sclean_air_pressure NOTIFY newTagData)
     Q_PROPERTY(int sclean_timer MEMBER sclean_timer NOTIFY newTagData)
     Q_PROPERTY(int spaint_exec MEMBER spaint_exec NOTIFY newTagData)
+    Q_PROPERTY(int spaint_inkType MEMBER spaint_inkType NOTIFY newTagData)
     Q_PROPERTY(double spaint_axisPosition MEMBER spaint_axisPosition NOTIFY newTagData)
     Q_PROPERTY(int spaint_timer MEMBER spaint_timer NOTIFY newTagData)
     Q_PROPERTY(int sdry_exec MEMBER sdry_exec NOTIFY newTagData)
@@ -84,6 +86,7 @@ private:
     float sclean_air_pressure;
     uint16_t sclean_timer;
     int16_t spaint_exec;
+    int16_t spaint_inkType;
     double spaint_axisPosition;
     uint16_t spaint_timer;
     int16_t sdry_exec;

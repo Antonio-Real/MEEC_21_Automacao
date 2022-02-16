@@ -3,10 +3,8 @@ import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
 import QtQuick.Layouts 1.15
 import PlcTags 1.0
-import MouseEventListener 1.0
 import "./pages"
 import "./fontAwesome"
-import "./components"
 
 ApplicationWindow {
     id: appRoot
@@ -15,6 +13,7 @@ ApplicationWindow {
     height: 720
     visible: true
     title: "Shoe Factory Manager"
+    //visibility: ApplicationWindow.Maximized
 
     property var currentUser
 
@@ -112,21 +111,5 @@ ApplicationWindow {
     }
 
 
-    SplashScreenManager {
-        id: screenSaver
-        anchors.fill: parent
-        anchors.top: parent.top
-        visible: false
-        sv_enabled: currentUser !== undefined
-        sv_pass_code: currentUser.pw
-        z:5
 
-        Connections {
-            target: MouseEventListener
-
-            function onMouseEventDetected() {
-                screenSaver.resetScreenSaver()
-            }
-        }
-    }
 }

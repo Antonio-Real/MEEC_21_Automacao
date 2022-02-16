@@ -24,6 +24,7 @@ void PlcProgram::readData()
     sclean_air_pressure = prog.sclean_air_pressure;
     sclean_timer = prog.sclean_timer;
     spaint_exec = prog.spaint_exec;
+    spaint_inkType = prog.spaint_inkType;
     spaint_axisPosition = prog.spaint_axisPosition;
     spaint_timer = prog.spaint_timer;
     sdry_exec = prog.sdry_exec;
@@ -53,6 +54,7 @@ void PlcProgram::writeData()
     prog.sclean_air_pressure = sclean_air_pressure;
     prog.sclean_timer = sclean_timer;
     prog.spaint_exec = spaint_exec;
+    prog.spaint_inkType = spaint_inkType;
     prog.spaint_axisPosition = spaint_axisPosition;
     prog.spaint_timer = spaint_timer;
     prog.sdry_exec = sdry_exec;

@@ -68,6 +68,7 @@ Page {
             sliderAirPressure.value = sclean_air_pressure
             spinBoxCleanTimer.value = sclean_timer
             ckBoxEnablePaint.checked = spaint_exec === 1
+            cboxPaintType.currentIndex = spaint_inkType - 1
             sliderPaintAxisPos.value = spaint_axisPosition
             spinBoxPaintTimer.value = spaint_timer
             ckBoxEnableDry.checked = sdry_exec === 1
@@ -89,6 +90,7 @@ Page {
         sclean_air_pressure: sliderAirPressure.value
         sclean_timer: spinBoxCleanTimer.value
         spaint_exec: ckBoxEnablePaint.checked ? 1 : 0
+        spaint_inkType: cboxPaintType.currentIndex + 1
         spaint_axisPosition: sliderPaintAxisPos.value
         spaint_timer: spinBoxPaintTimer.value
         sdry_exec: ckBoxEnableDry.checked ? 1 : 0
@@ -259,13 +261,13 @@ Page {
                 }
 
                 Label {
-                    text: qsTr("Distance"); font.pointSize: 15
+                    text: qsTr("Distance: %1 mm").arg(sliderFillAxisPos.value.toFixed(2)); font.pointSize: 15
                     Layout.fillWidth: true
                     Layout.preferredWidth: 20
                 }
                 Slider {
                     id: sliderFillAxisPos
-                    from: 0; to: 100
+                    from: 0; to: 1000
                     enabled: ckBoxEnableFill.checked
                     Layout.fillWidth: true
                     Layout.preferredWidth: 20
@@ -364,9 +366,9 @@ Page {
                 }
 
                 Label {
-                    text: qsTr("Air pressure"); font.pointSize: 15
+                    text: qsTr("Air pressure: %1 bar").arg(sliderAirPressure.value.toFixed(2)); font.pointSize: 15
                     Layout.fillWidth: true
-                    Layout.preferredWidth: 20
+                    Layout.preferredWidth: 30
                 }
                 Slider {
                     id: sliderAirPressure
@@ -416,13 +418,26 @@ Page {
                 }
 
                 Label {
-                    text: qsTr("Distance"); font.pointSize: 15
+                    text: qsTr("Distance: %1 mm").arg(sliderPaintAxisPos.value.toFixed(2)); font.pointSize: 15
                     Layout.fillWidth: true
-                    Layout.preferredWidth: 20
+                    Layout.preferredWidth: 30
                 }
                 Slider {
                     id: sliderPaintAxisPos
-                    from: 0; to: 100
+                    from: 0; to: 1000
+                    enabled: ckBoxEnablePaint.checked
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
+                }
+
+                Label {
+                    text: qsTr("Paint type"); font.pointSize: 15
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
+                }
+                ComboBox {
+                    id: cboxPaintType
+                    model: [qsTr("Ink 1"), qsTr("Ink 2"), qsTr("Ink 3")]
                     enabled: ckBoxEnablePaint.checked
                     Layout.fillWidth: true
                     Layout.preferredWidth: 20

@@ -4,11 +4,15 @@ import QtQuick.Layouts 1.15
 import Qt.labs.settings 1.0
 import PlcTags 1.0
 import Translation 1.0
+import MouseEventListener 1.0
+import "../components"
 import "../fontAwesome"
 import "../pages"
 
 Page {
     id: root
+
+    property StackView stack: StackView.view
 
     // For saving the data in the ListModels
     property string alarmHistoryModelData: ""
@@ -23,10 +27,10 @@ Page {
 
     // For checking which pages the current user can visit
     function checkPermissions(role, index) {
-        var permissions = [{"role" : "OPERATOR", "pages" : [0, 5, 6]},
-                           {"role" : "DESIGNER", "pages" : [0, 5, 6]},
-                           {"role" : "SUPERVISOR", "pages" : [0, 2, 3, 4, 5, 6]},
-                           {"role" : "MANAGER", "pages" : [0, 1, 2, 3, 4, 5, 6]}]
+        var permissions = [{"role" : "OPERATOR", "pages" : [0, 5, 6, 7]},
+                           {"role" : "DESIGNER", "pages" : [0, 5, 6, 7]},
+                           {"role" : "SUPERVISOR", "pages" : [0, 2, 3, 4, 5, 6, 7]},
+                           {"role" : "MANAGER", "pages" : [0, 1, 2, 3, 4, 5, 6, 7]}]
 
         for(var i=0; i < permissions.length; i++) {
             var perm = permissions[i]
@@ -43,6 +47,7 @@ Page {
         tagName: "GL_Manual_Button"
         periodicReads: true
         Component.onCompleted: initializeTag()
+        onDataChanged: console.log("Automatic is on:", data)
     }
 
     header: ToolBar {
@@ -149,6 +154,9 @@ Page {
                         if(index === 2 && tagAutomaticStatus.data)
                             return
 
+                        if(index === 7)
+                            stack.replace(null, "qrc:/qml/pages/LoginPage.qml")
+
                         listView.currentIndex = index
                         drawer.close()
                     }
@@ -161,7 +169,8 @@ Page {
                 { title: qsTr("Alarms"), icon: FontAwesome.warning },
                 { title: qsTr("Maintenance"), icon: FontAwesome.wrench },
                 { title: qsTr("History"), icon: FontAwesome.list },
-                { title: qsTr("Settings"), icon: FontAwesome.cogs },]
+                { title: qsTr("Settings"), icon: FontAwesome.cogs },
+                { title: qsTr("Logout"), icon: FontAwesome.signOut }]
 
             ScrollIndicator.vertical: ScrollIndicator { }
         }
@@ -174,7 +183,7 @@ Page {
 
         SystemPage {}
         AutomaticPage {
-            onProductionStarted: listView.currentIndex = 0 // Change to system page
+            onProductionStarted: listView.currentIndex = SwipeView.index // Change to system page
         }
         ManualPage {}
         AlarmsPage {
@@ -183,5 +192,28 @@ Page {
         MaintenancePage {}
         HistoryPage {}
         SettingsPage {}
+    }
+
+    SplashScreenManager {
+        id: screenSaver
+        anchors.fill: parent
+        anchors.top: parent.top
+        visible: false
+        sv_enabled: (currentUser !== undefined) && (tagAutomaticStatus.data === false)
+        onSv_enabledChanged: {
+            console.log("SV_enabled:",sv_enabled)
+            console.log("Flags:", (currentUser !== undefined),(tagAutomaticStatus.data === false), (currentUser !== undefined) && (tagAutomaticStatus.data === false))
+        }
+
+        sv_pass_code: currentUser.pw
+        z:5
+
+        Connections {
+            target: MouseEventListener
+
+            function onMouseEventDetected() {
+                screenSaver.resetScreenSaver()
+            }
+        }
     }
 }

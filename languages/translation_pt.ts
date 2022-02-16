@@ -103,143 +103,171 @@
 <context>
     <name>AutomaticPage</name>
     <message>
-        <location filename="../qml/pages/AutomaticPage.qml" line="128"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="130"/>
         <source>Boot type:</source>
         <translation>Calçado:</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AutomaticPage.qml" line="161"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="163"/>
         <source>Shoe</source>
         <translation>Sapato</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AutomaticPage.qml" line="191"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="193"/>
         <source>Boot</source>
         <translation>Bota</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AutomaticPage.qml" line="222"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="224"/>
         <source>High Boot</source>
         <translation>Cano alto</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AutomaticPage.qml" line="234"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="236"/>
         <source>Quantity</source>
         <translation>Quantidade</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AutomaticPage.qml" line="248"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="250"/>
         <source>Fill</source>
         <translation>Enchimento</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AutomaticPage.qml" line="255"/>
-        <location filename="../qml/pages/AutomaticPage.qml" line="307"/>
-        <location filename="../qml/pages/AutomaticPage.qml" line="360"/>
-        <location filename="../qml/pages/AutomaticPage.qml" line="412"/>
-        <location filename="../qml/pages/AutomaticPage.qml" line="469"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="257"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="309"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="362"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="414"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="484"/>
         <source>Enable</source>
         <translation>Ativar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AutomaticPage.qml" line="262"/>
-        <location filename="../qml/pages/AutomaticPage.qml" line="419"/>
         <source>Distance</source>
-        <translation>Distância</translation>
+        <translation type="vanished">Distância</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AutomaticPage.qml" line="275"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="277"/>
         <source>Fill timer</source>
         <translation>Tempo de enchimento</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AutomaticPage.qml" line="299"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="301"/>
         <source>Polishing</source>
         <translation>Polimento</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AutomaticPage.qml" line="315"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="317"/>
         <source>Brush type</source>
         <translation>Tipo de escova</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AutomaticPage.qml" line="321"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="323"/>
         <source>Brush 1</source>
         <translation>Escova 1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AutomaticPage.qml" line="321"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="323"/>
         <source>Brush 2</source>
         <translation>Escova 2</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AutomaticPage.qml" line="321"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="323"/>
         <source>Brush 3</source>
         <translation>Escova 3</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AutomaticPage.qml" line="328"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="330"/>
         <source>Polishing timer</source>
         <translation>Tempo de polimento</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AutomaticPage.qml" line="352"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="354"/>
         <source>Clean</source>
         <translation>Limpeza</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AutomaticPage.qml" line="367"/>
         <source>Air pressure</source>
-        <translation>Pressão do ar</translation>
+        <translation type="vanished">Pressão do ar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AutomaticPage.qml" line="380"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="264"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="421"/>
+        <source>Distance: %1 mm</source>
+        <translation>Distância: %1 mm</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AutomaticPage.qml" line="369"/>
+        <source>Air pressure: %1 bar</source>
+        <translation>Pressão do ar: %1 bar</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AutomaticPage.qml" line="382"/>
         <source>Clean timer</source>
         <translation>Tempo limpeza</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AutomaticPage.qml" line="404"/>
-        <location filename="../qml/pages/AutomaticPage.qml" line="460"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="406"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="475"/>
         <source>Paint</source>
         <translation>Pintura</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AutomaticPage.qml" line="432"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="434"/>
+        <source>Paint type</source>
+        <translation>Tipo de tinta</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AutomaticPage.qml" line="440"/>
+        <source>Ink 1</source>
+        <translation>Tinta 1</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AutomaticPage.qml" line="440"/>
+        <source>Ink 2</source>
+        <translation>Tinta 2</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AutomaticPage.qml" line="440"/>
+        <source>Ink 3</source>
+        <translation>Tinta 3</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AutomaticPage.qml" line="447"/>
         <source>Paint timer</source>
         <translation>Tempo de pintura</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AutomaticPage.qml" line="479"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="494"/>
         <source>UV</source>
         <translation>UV</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AutomaticPage.qml" line="488"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="503"/>
         <source>Heat</source>
         <translation>Calor</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AutomaticPage.qml" line="496"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="511"/>
         <source>Fan</source>
         <translation>Ventoinha</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AutomaticPage.qml" line="502"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="517"/>
         <source>UV timer</source>
         <translation>Tempo UV</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AutomaticPage.qml" line="503"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="518"/>
         <source>Heat timer</source>
         <translation>Tempo Calor</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AutomaticPage.qml" line="504"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="519"/>
         <source>Fan timer</source>
-        <translation>Tempo ventoinha</translation>
+        <translation>Tempo Ventoinha</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AutomaticPage.qml" line="532"/>
+        <location filename="../qml/pages/AutomaticPage.qml" line="547"/>
         <source>Start program</source>
         <translation>Começar programa</translation>
     </message>
@@ -294,54 +322,59 @@
 <context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="85"/>
+        <location filename="../qml/pages/MainPage.qml" line="90"/>
         <source>Lang: EN</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="90"/>
+        <location filename="../qml/pages/MainPage.qml" line="95"/>
         <source>Lang: PT</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="95"/>
+        <location filename="../qml/pages/MainPage.qml" line="100"/>
         <source>Quit app</source>
         <translation>Fechar aplicação</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="158"/>
+        <location filename="../qml/pages/MainPage.qml" line="166"/>
         <source>System</source>
         <translation>Sistema</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="159"/>
+        <location filename="../qml/pages/MainPage.qml" line="167"/>
         <source>Automatic</source>
         <translation>Automático</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="160"/>
+        <location filename="../qml/pages/MainPage.qml" line="168"/>
         <source>Manual</source>
         <translation>Manual</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="161"/>
+        <location filename="../qml/pages/MainPage.qml" line="169"/>
         <source>Alarms</source>
         <translation>Alarmes</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="162"/>
+        <location filename="../qml/pages/MainPage.qml" line="170"/>
         <source>Maintenance</source>
         <translation>Manutenção</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="163"/>
+        <location filename="../qml/pages/MainPage.qml" line="171"/>
         <source>History</source>
         <translation>Histórico</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="164"/>
+        <location filename="../qml/pages/MainPage.qml" line="172"/>
         <source>Settings</source>
         <translation>Definições</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="173"/>
+        <source>Logout</source>
+        <translation>Sair</translation>
     </message>
 </context>
 <context>
@@ -406,10 +439,8 @@
         <translation>Enchimento</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManualPage.qml" line="197"/>
-        <location filename="../qml/pages/ManualPage.qml" line="325"/>
         <source>Distance: %1</source>
-        <translation>Distância: %1</translation>
+        <translation type="vanished">Distância: %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/ManualPage.qml" line="234"/>
@@ -443,9 +474,19 @@
         <translation>Limpeza</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManualPage.qml" line="283"/>
         <source>Air pressure: %1</source>
-        <translation>Pressão do ar: %1</translation>
+        <translation type="vanished">Pressão do ar: %1</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ManualPage.qml" line="197"/>
+        <location filename="../qml/pages/ManualPage.qml" line="325"/>
+        <source>Distance: %1 mm</source>
+        <translation>Distância: %1 mm</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ManualPage.qml" line="283"/>
+        <source>Air pressure: %1 bar</source>
+        <translation>Pressão do ar: %1 bar</translation>
     </message>
     <message>
         <location filename="../qml/pages/ManualPage.qml" line="297"/>
@@ -655,12 +696,12 @@
         <translation type="vanished">Shoe Factory</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="32"/>
+        <location filename="../qml/main.qml" line="31"/>
         <source>%1 - %2</source>
         <translation>%1 - %2</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="109"/>
+        <location filename="../qml/main.qml" line="108"/>
         <source>Connection to PLC currently offline, please check cabling</source>
         <translation>Conexão entre PLC offline, confirmar ligações</translation>
     </message>

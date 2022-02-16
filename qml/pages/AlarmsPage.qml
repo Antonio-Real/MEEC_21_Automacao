@@ -88,7 +88,7 @@ Page {
                 periodicReads: true
                 onDataChanged: {
                     if(data === true) {
-                        alarmModel.append({"time" : new Date().toUTCString(), "message" : modelData.alarmMessage})
+                        alarmModel.insert(0, {"time" : new Date().toUTCString(), "message" : modelData.alarmMessage})
                         buzzer.play()
                         alarmDetected()
                     }
@@ -177,7 +177,7 @@ Page {
                         Layout.fillWidth: true
                         Layout.preferredWidth: 20
                         onClicked: {
-                            alarmHistoryModel.append({"time" : time, "message" : message})
+                            alarmHistoryModel.insert(0, {"time" : time, "message" : message})
                             alarmModel.remove(index)
                         }
                     }

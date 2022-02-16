@@ -51,12 +51,12 @@ Page {
         Item { Layout.fillHeight: true }
         Text {
             Layout.alignment: Qt.AlignHCenter
-            Layout.preferredWidth: 150
-            Layout.preferredHeight: 150
+            Layout.preferredWidth: 200
+            Layout.preferredHeight: 200
             horizontalAlignment: Text.AlignHCenter
             font.family: FontAwesome.fontFamily
-            minimumPointSize: 20
-            font.pointSize: 100
+            minimumPointSize: 50
+            font.pointSize: 150
             fontSizeMode: Text.VerticalFit
             text: FontAwesome.userCircle
         }

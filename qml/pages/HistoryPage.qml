@@ -58,7 +58,7 @@ Page {
             if((data === true) && (!firstTime)) {
                 tagShoeQuantity.readTag()
                 tagShoeType.readTag()
-                listModel.append({"time" : new Date().toUTCString(), "type" : tagShoeType.data, "quantity" : tagShoeQuantity.data})
+                listModel.insert(0, {"time" : new Date().toUTCString(), "type" : tagShoeType.data, "quantity" : tagShoeQuantity.data})
             }
             else {
                 firstTime = false

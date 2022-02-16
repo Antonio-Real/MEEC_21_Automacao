@@ -84,7 +84,7 @@ Page {
         tagType: Tag.BOOL
         data: switchClean.checked
         onDataChanged: writeTag()
-        periodicReads: isCurrentPage
+        //periodicReads: isCurrentPage
         Component.onCompleted: {
             initializeTag()
             switchClean.checked = data
@@ -194,7 +194,7 @@ Page {
                 }
 
                 Label {
-                    text: qsTr("Distance: %1").arg(fillDist.value.toFixed(2))
+                    text: qsTr("Distance: %1 mm").arg(fillDist.value.toFixed(2))
                     font.pointSize: 15
                     Layout.fillWidth: true
                     Layout.preferredWidth: 20
@@ -202,7 +202,7 @@ Page {
                 Slider {
                     id: fillDist
                     from: 0
-                    to: 100
+                    to: 1000
                     Layout.fillWidth: true
                     Layout.preferredWidth: 20
                 }
@@ -280,7 +280,7 @@ Page {
                 }
 
                 Label {
-                    text: qsTr("Air pressure: %1").arg(airPressureSlider.value.toFixed(2))
+                    text: qsTr("Air pressure: %1 bar").arg(airPressureSlider.value.toFixed(2))
                     font.pointSize: 15
                     Layout.fillWidth: true
                     Layout.preferredWidth: 20
@@ -322,7 +322,7 @@ Page {
                 }
 
                 Label {
-                    text: qsTr("Distance: %1").arg(paintDist.value.toFixed(2))
+                    text: qsTr("Distance: %1 mm").arg(paintDist.value.toFixed(2))
                     font.pointSize: 15
                     Layout.fillWidth: true
                     Layout.preferredWidth: 20
