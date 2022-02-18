@@ -172,6 +172,18 @@ Page {
         }
     }
 
+    Tag {
+        tagName: "man_active_conveyor"
+        tagType: Tag.BOOL
+        data: switchConveyor.checked
+        onDataChanged: writeTag()
+        periodicReads: isCurrentPage
+        Component.onCompleted: {
+            initializeTag()
+            switchFan.checked = data
+        }
+    }
+
 
     ColumnLayout {
         anchors.fill: parent
@@ -393,6 +405,13 @@ Page {
                 Switch {
                     id: switchFan
                     text: qsTr("Fan")
+                    font.pointSize: 15
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 20
+                }
+                Switch {
+                    id: switchConveyor
+                    text: qsTr("Conveyor belt")
                     font.pointSize: 15
                     Layout.fillWidth: true
                     Layout.preferredWidth: 20

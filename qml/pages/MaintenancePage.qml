@@ -11,7 +11,8 @@ Page {
     padding: 50
 
     property var repeaterModel: [
-        {label : qsTr("Carpet Motor"), maxValTag : "GL_Max_Motor_Time", currValTag : "GL_Current_Motor_Time", resetToZero: true, units : "H",},
+        {label : qsTr("Carpet Motor"), maxValTag : "GL_Max_Motor_Time", currValTag : "GL_Current_Motor_Time", resetToZero: true, units : "H"},
+        {label : qsTr("Fill tank"), maxValTag : "GL_Max_Filament", currValTag : "in_s1_Filling_level_in_tank", resetToZero: false, units : "Kg"},
         {label : qsTr("Brush 1"), maxValTag : "GL_NumberMaxBrush1", currValTag : "s2_brushType_1_value", resetToZero: true, units : "u"},
         {label : qsTr("Brush 2"), maxValTag : "GL_NumberMaxBrush2", currValTag : "s2_brushType_2_value", resetToZero: true, units : "u"},
         {label : qsTr("Brush 3"), maxValTag : "GL_NumberMaxBrush3", currValTag : "s2_brushType_3_value", resetToZero: true, units : "u"},

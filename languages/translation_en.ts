@@ -386,46 +386,51 @@
     </message>
     <message>
         <location filename="../qml/pages/MaintenancePage.qml" line="15"/>
+        <source>Fill tank</source>
+        <translation>Fill tank</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MaintenancePage.qml" line="16"/>
         <source>Brush 1</source>
         <translation>Brush 1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MaintenancePage.qml" line="16"/>
+        <location filename="../qml/pages/MaintenancePage.qml" line="17"/>
         <source>Brush 2</source>
         <translation>Brush 2</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MaintenancePage.qml" line="17"/>
+        <location filename="../qml/pages/MaintenancePage.qml" line="18"/>
         <source>Brush 3</source>
         <translation>Brush 3</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MaintenancePage.qml" line="18"/>
+        <location filename="../qml/pages/MaintenancePage.qml" line="19"/>
         <source>Ink tank A</source>
         <translation>Ink tank A</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MaintenancePage.qml" line="19"/>
+        <location filename="../qml/pages/MaintenancePage.qml" line="20"/>
         <source>Ink tank B</source>
         <translation>Ink tank B</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MaintenancePage.qml" line="20"/>
+        <location filename="../qml/pages/MaintenancePage.qml" line="21"/>
         <source>Ink tank C</source>
         <translation>Ink tank C</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MaintenancePage.qml" line="36"/>
+        <location filename="../qml/pages/MaintenancePage.qml" line="37"/>
         <source>Max value</source>
         <translation>Max value</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MaintenancePage.qml" line="47"/>
+        <location filename="../qml/pages/MaintenancePage.qml" line="48"/>
         <source>Current value</source>
         <translation>Current value</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MaintenancePage.qml" line="58"/>
+        <location filename="../qml/pages/MaintenancePage.qml" line="59"/>
         <source>Reset</source>
         <translation>Reset</translation>
     </message>
@@ -433,8 +438,8 @@
 <context>
     <name>ManualPage</name>
     <message>
-        <location filename="../qml/pages/ManualPage.qml" line="190"/>
-        <location filename="../qml/pages/ManualPage.qml" line="217"/>
+        <location filename="../qml/pages/ManualPage.qml" line="202"/>
+        <location filename="../qml/pages/ManualPage.qml" line="229"/>
         <source>Filling</source>
         <translation>Filling</translation>
     </message>
@@ -443,33 +448,33 @@
         <translation type="vanished">Distance: %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManualPage.qml" line="234"/>
-        <location filename="../qml/pages/ManualPage.qml" line="254"/>
+        <location filename="../qml/pages/ManualPage.qml" line="246"/>
+        <location filename="../qml/pages/ManualPage.qml" line="266"/>
         <source>Polishing</source>
         <translation>Polishing</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManualPage.qml" line="241"/>
+        <location filename="../qml/pages/ManualPage.qml" line="253"/>
         <source>Brush type</source>
         <translation>Brush type</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManualPage.qml" line="247"/>
+        <location filename="../qml/pages/ManualPage.qml" line="259"/>
         <source>Brush 1</source>
         <translation>Brush 1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManualPage.qml" line="247"/>
+        <location filename="../qml/pages/ManualPage.qml" line="259"/>
         <source>Brush 2</source>
         <translation>Brush 2</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManualPage.qml" line="247"/>
+        <location filename="../qml/pages/ManualPage.qml" line="259"/>
         <source>Brush 3</source>
         <translation>Brush 3</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManualPage.qml" line="276"/>
+        <location filename="../qml/pages/ManualPage.qml" line="288"/>
         <source>Clean</source>
         <translation>Clean</translation>
     </message>
@@ -478,66 +483,71 @@
         <translation type="vanished">Air pressure: %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManualPage.qml" line="197"/>
-        <location filename="../qml/pages/ManualPage.qml" line="325"/>
+        <location filename="../qml/pages/ManualPage.qml" line="209"/>
+        <location filename="../qml/pages/ManualPage.qml" line="337"/>
         <source>Distance: %1 mm</source>
         <translation>Distance: %1 mm</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManualPage.qml" line="283"/>
+        <location filename="../qml/pages/ManualPage.qml" line="295"/>
         <source>Air pressure: %1 bar</source>
         <translation>Air pressure: %1 bar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManualPage.qml" line="297"/>
+        <location filename="../qml/pages/ManualPage.qml" line="309"/>
         <source>Cleaning</source>
         <translation>Cleaning</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManualPage.qml" line="318"/>
-        <location filename="../qml/pages/ManualPage.qml" line="356"/>
+        <location filename="../qml/pages/ManualPage.qml" line="330"/>
+        <location filename="../qml/pages/ManualPage.qml" line="368"/>
         <source>Painting</source>
         <translation>Painting</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManualPage.qml" line="344"/>
+        <location filename="../qml/pages/ManualPage.qml" line="356"/>
         <source>Ink type</source>
         <translation>Ink type</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManualPage.qml" line="350"/>
+        <location filename="../qml/pages/ManualPage.qml" line="362"/>
         <source>Ink 1</source>
         <translation>Ink 1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManualPage.qml" line="350"/>
+        <location filename="../qml/pages/ManualPage.qml" line="362"/>
         <source>Ink 2</source>
         <translation>Ink 2</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManualPage.qml" line="350"/>
+        <location filename="../qml/pages/ManualPage.qml" line="362"/>
         <source>Ink 3</source>
         <translation>Ink 3</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManualPage.qml" line="373"/>
+        <location filename="../qml/pages/ManualPage.qml" line="385"/>
         <source>Drying</source>
         <translation>Drying</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManualPage.qml" line="381"/>
+        <location filename="../qml/pages/ManualPage.qml" line="393"/>
         <source>UV</source>
         <translation>UV</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManualPage.qml" line="388"/>
+        <location filename="../qml/pages/ManualPage.qml" line="400"/>
         <source>Heat</source>
         <translation>Heat</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManualPage.qml" line="395"/>
+        <location filename="../qml/pages/ManualPage.qml" line="407"/>
         <source>Fan</source>
         <translation>Fan</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ManualPage.qml" line="414"/>
+        <source>Conveyor belt</source>
+        <translation>Conveyor belt</translation>
     </message>
 </context>
 <context>
