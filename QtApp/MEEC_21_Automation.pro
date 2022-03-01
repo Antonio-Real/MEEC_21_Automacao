@@ -10,15 +10,25 @@ INCLUDEPATH += EIP
 
 # These may or may not be necessary
 #-lcli -lws2_32
-LIBS += -L"C:\Users\tonir\Documents\Projetos_IPCA\MEEC_21_Automacao\EIP\bin" -lplctag
+LIBS += -L$${PWD}/EIP/bin -lplctag
 
 SOURCES += \
-        connectionwatchdog.cpp \
-        main.cpp \
-        mouseeventlistener.cpp \
-        plcprogram.cpp \
-        tag.cpp \
-        translationmanager.cpp
+        src/connectionwatchdog.cpp \
+        src/main.cpp \
+        src/mouseeventlistener.cpp \
+        src/plcprogram.cpp \
+        src/tag.cpp \
+        src/translationmanager.cpp
+
+HEADERS += \
+    src/connectionwatchdog.h \
+    src/mouseeventlistener.h \
+    src/plcprogram.h \
+    src/plctag.h \
+    src/tag.h \
+    src/translationmanager.h
+
+INCLUDEPATH += src
 
 RESOURCES += qml.qrc
 
@@ -35,10 +45,4 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-HEADERS += \
-    connectionwatchdog.h \
-    mouseeventlistener.h \
-    plcprogram.h \
-    plctag.h \
-    tag.h \
-    translationmanager.h
+
