@@ -154,8 +154,10 @@ Page {
                         if(index === 2 && tagAutomaticStatus.data)
                             return
 
-                        if(index === 7)
+                        if(index === 7) {
                             stack.replace(null, "qrc:/qml/pages/LoginPage.qml")
+                            currentUser = undefined
+                        }
 
                         listView.currentIndex = index
                         drawer.close()
@@ -187,33 +189,33 @@ Page {
         }
         ManualPage {}
         AlarmsPage {
-            onAlarmDetected: listView.currentIndex = SwipeView.index
+            //onAlarmDetected: listView.currentIndex = SwipeView.index
         }
         MaintenancePage {}
         HistoryPage {}
         SettingsPage {}
     }
 
-    SplashScreenManager {
-        id: screenSaver
-        anchors.fill: parent
-        anchors.top: parent.top
-        visible: false
-        sv_enabled: (currentUser !== undefined) && (tagAutomaticStatus.data === false)
-        onSv_enabledChanged: {
-            console.log("SV_enabled:",sv_enabled)
-            console.log("Flags:", (currentUser !== undefined),(tagAutomaticStatus.data === false), (currentUser !== undefined) && (tagAutomaticStatus.data === false))
-        }
+//    SplashScreenManager {
+//        id: screenSaver
+//        anchors.fill: parent
+//        anchors.top: parent.top
+//        visible: false
+//        sv_enabled: false//(currentUser !== undefined) && (tagAutomaticStatus.data === false)
+//        onSv_enabledChanged: {
+//            console.log("SV_enabled:",sv_enabled)
+//            console.log("Flags:", (currentUser !== undefined),(tagAutomaticStatus.data === false), (currentUser !== undefined) && (tagAutomaticStatus.data === false))
+//        }
 
-        sv_pass_code: currentUser.pw
-        z:5
+//        sv_pass_code: currentUser.pw
+//        z:5
 
-        Connections {
-            target: MouseEventListener
+//        Connections {
+//            target: MouseEventListener
 
-            function onMouseEventDetected() {
-                screenSaver.resetScreenSaver()
-            }
-        }
-    }
+//            function onMouseEventDetected() {
+//                screenSaver.resetScreenSaver()
+//            }
+//        }
+//    }
 }
