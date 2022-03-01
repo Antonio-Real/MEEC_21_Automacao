@@ -1,0 +1,11 @@
+prefix=C:/Program Files/libplctag_project
+exec_prefix=C:/Program Files/libplctag_project
+libdir=C:/Program Files/libplctag_project/lib
+includedir=C:/Program Files/libplctag_project/include
+
+Name: libplctag
+Description: Portable and simple API for accessing Allen-Bradley PLC data over Ethernet
+Version: 2.4.10
+
+Libs: -L${libdir} -lplctag -pthread
+Cflags: -I${includedir}
